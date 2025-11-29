@@ -13,38 +13,45 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
-        main.cpp
-        mainwindow.cpp
-        mainwindow.h
-        mainwindow.ui
-        savefile.cpp
-        savefile.h
-        ticketresource.cpp
-        ticketresource.h
-        ticketmanager.cpp
-        ticketmanager.h
-        mysterygift.cpp
-        mysterygift.h
-        wondercardrenderer.cpp
-        wondercardrenderer.h
-        editablewondercardwidget.cpp
-        editablewondercardwidget.h
-        gbaromreader.cpp
-        gbaromreader.h
-        tileviewer.cpp
-        tileviewer.h
-        gen3fontrenderer.cpp
-        gen3fontrenderer.h
-        authenticwondercardwidget.cpp
-        authenticwondercardwidget.h
-        romdatabase.cpp
-        romdatabase.h
-        romloader.cpp
-        romloader.h
-        fallbackgraphics.cpp
-        fallbackgraphics.h
-        scriptdisassembler.cpp
-        scriptdisassembler.h
+        src/main.cpp
+        # Core
+        src/core/savefile.cpp
+        src/core/savefile.h
+        src/core/mysterygift.cpp
+        src/core/mysterygift.h
+        # ROM
+        src/rom/gbaromreader.cpp
+        src/rom/gbaromreader.h
+        src/rom/romdatabase.cpp
+        src/rom/romdatabase.h
+        src/rom/romloader.cpp
+        src/rom/romloader.h
+        # Tickets
+        src/tickets/ticketresource.cpp
+        src/tickets/ticketresource.h
+        src/tickets/ticketmanager.cpp
+        src/tickets/ticketmanager.h
+        # Rendering
+        src/rendering/wondercardrenderer.cpp
+        src/rendering/wondercardrenderer.h
+        src/rendering/gen3fontrenderer.cpp
+        src/rendering/gen3fontrenderer.h
+        src/rendering/fallbackgraphics.cpp
+        src/rendering/fallbackgraphics.h
+        src/rendering/tileviewer.cpp
+        src/rendering/tileviewer.h
+        # UI
+        src/ui/mainwindow.cpp
+        src/ui/mainwindow.h
+        src/ui/mainwindow.ui
+        src/ui/editablewondercardwidget.cpp
+        src/ui/editablewondercardwidget.h
+        src/ui/authenticwondercardwidget.cpp
+        src/ui/authenticwondercardwidget.h
+        # Script
+        src/script/scriptdisassembler.cpp
+        src/script/scriptdisassembler.h
+        # Resources
         resources.qrc
 )
 
@@ -72,6 +79,17 @@ else()
 endif()
 
 target_link_libraries(Mystery_Gift_Injector PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+
+# Include directories for source organization
+target_include_directories(Mystery_Gift_Injector PRIVATE
+    ${CMAKE_SOURCE_DIR}/src
+    ${CMAKE_SOURCE_DIR}/src/core
+    ${CMAKE_SOURCE_DIR}/src/rom
+    ${CMAKE_SOURCE_DIR}/src/tickets
+    ${CMAKE_SOURCE_DIR}/src/rendering
+    ${CMAKE_SOURCE_DIR}/src/ui
+    ${CMAKE_SOURCE_DIR}/src/script
+)
 
 # Disable debug output in release builds
 target_compile_definitions(Mystery_Gift_Injector PRIVATE
