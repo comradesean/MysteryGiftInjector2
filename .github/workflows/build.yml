@@ -35,12 +35,32 @@ jobs:
     - name: Prepare Release Package
       shell: pwsh
       run: |
+        # Create directory structure
         New-Item -ItemType Directory -Force -Path release
+        New-Item -ItemType Directory -Force -Path release/lib
+        New-Item -ItemType Directory -Force -Path temp_deploy
+
+        # Copy main files to release root
         Copy-Item build/Mystery_Gift_Injector.exe release/
         Copy-Item -Recurse build/Tickets release/
         Copy-Item build/documentation.html release/
-        # Run windeployqt to bundle Qt DLLs
-        & "$env:QT_ROOT_DIR/bin/windeployqt.exe" release/Mystery_Gift_Injector.exe --release --no-translations
+
+        # Run windeployqt to temp location
+        & "$env:QT_ROOT_DIR/bin/windeployqt.exe" build/Mystery_Gift_Injector.exe --release --no-translations --dir temp_deploy
+
+        # Move DLLs to lib folder
+        Get-ChildItem temp_deploy -Filter "*.dll" | Move-Item -Destination release/lib/
+
+        # Move plugin folders to release root (platforms, styles, etc.)
+        Get-ChildItem temp_deploy -Directory | Move-Item -Destination release/
+
+        # Create qt.conf to tell Qt where to find libraries
+        @"
+        [Paths]
+        Prefix = .
+        Libraries = lib
+        Plugins = .
+        "@ | Out-File -FilePath release/qt.conf -Encoding ASCII
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
