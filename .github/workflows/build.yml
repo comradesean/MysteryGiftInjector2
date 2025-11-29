@@ -37,7 +37,6 @@ jobs:
       run: |
         # Create directory structure
         New-Item -ItemType Directory -Force -Path release
-        New-Item -ItemType Directory -Force -Path release/lib
         New-Item -ItemType Directory -Force -Path release/plugins
         New-Item -ItemType Directory -Force -Path temp_deploy
 
@@ -49,17 +48,15 @@ jobs:
         # Run windeployqt to temp location
         & "$env:QT_ROOT_DIR/bin/windeployqt.exe" build/Mystery_Gift_Injector.exe --release --no-translations --dir temp_deploy
 
-        # Move DLLs to lib folder
-        Get-ChildItem temp_deploy -Filter "*.dll" | Move-Item -Destination release/lib/
+        # Move DLLs to root (next to exe)
+        Get-ChildItem temp_deploy -Filter "*.dll" | Move-Item -Destination release/
 
         # Move plugin folders to plugins folder (platforms, styles, imageformats, etc.)
         Get-ChildItem temp_deploy -Directory | Move-Item -Destination release/plugins/
 
-        # Create qt.conf to tell Qt where to find libraries and plugins
+        # Create qt.conf to tell Qt where to find plugins
         @"
         [Paths]
-        Prefix = .
-        Libraries = lib
         Plugins = plugins
         "@ | Out-File -FilePath release/qt.conf -Encoding ASCII
 
