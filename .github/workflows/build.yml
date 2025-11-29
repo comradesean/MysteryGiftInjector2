@@ -1,0 +1,46 @@
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v4
+      with:
+        version: '6.6.0'
+        host: 'windows'
+        target: 'desktop'
+        arch: 'win64_mingw'
+        modules: 'qtimageformats'
+
+    - name: Configure CMake
+      run: cmake -B build -DCMAKE_BUILD_TYPE=Release -G "MinGW Makefiles"
+
+    - name: Build
+      run: cmake --build build --config Release
+
+    - name: Prepare Release Package
+      run: |
+        mkdir release
+        cp build/Mystery_Gift_Injector.exe release/
+        cp -r build/Tickets release/
+        cp build/documentation.html release/
+        # Run windeployqt to bundle Qt DLLs
+        windeployqt release/Mystery_Gift_Injector.exe --release --no-translations
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: Mystery_Gift_Injector-Windows
+        path: release/
