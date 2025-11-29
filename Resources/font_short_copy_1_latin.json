@@ -1,0 +1,1297 @@
+{
+  "description": "Pokemon Emerald FONT_SHORT_COPY_1 Latin mapping",
+  "formula": "TBL characters: FONT_POSITION = TBL_HEX * 2",
+  "total_characters": 144,
+  "tbl_count": 130,
+  "manual_count": 14,
+  "fixed_char_size": {
+    "width": 8,
+    "height": 16,
+    "render_height": 14
+  },
+  "characters_by_position": {
+    "0": {
+      "character": " ",
+      "name": "SPACE",
+      "tbl_hex": "0x00",
+      "tbl_decimal": 0,
+      "font_position": 0,
+      "source": "TBL"
+    },
+    "42": {
+      "character": "ß",
+      "name": "GERMAN_SHARP_S",
+      "tbl_hex": "0x15",
+      "tbl_decimal": 21,
+      "font_position": 42,
+      "source": "TBL"
+    },
+    "54": {
+      "character": "é",
+      "name": "E_ACUTE",
+      "tbl_hex": "0x1B",
+      "tbl_decimal": 27,
+      "font_position": 54,
+      "source": "TBL"
+    },
+    "162": {
+      "character": "¿",
+      "name": "INVERTED_QUESTION",
+      "description": "Upside down question mark",
+      "font_position": 162,
+      "source": "MANUAL"
+    },
+    "164": {
+      "character": "¡",
+      "name": "INVERTED_EXCLAIM",
+      "description": "Upside down exclamation mark",
+      "font_position": 164,
+      "source": "MANUAL"
+    },
+    "166": {
+      "character": "PK",
+      "name": "LIGATURE_PK",
+      "description": "PK ligature for POKEMON",
+      "font_position": 166,
+      "source": "MANUAL"
+    },
+    "168": {
+      "character": "MN",
+      "name": "LIGATURE_MN",
+      "description": "MN ligature for POKEMON",
+      "font_position": 168,
+      "source": "MANUAL"
+    },
+    "170": {
+      "character": "PO",
+      "name": "LIGATURE_PO",
+      "description": "PO ligature for POKE",
+      "font_position": 170,
+      "source": "MANUAL"
+    },
+    "172": {
+      "character": "KE",
+      "name": "LIGATURE_KE",
+      "description": "KE ligature for POKE",
+      "font_position": 172,
+      "source": "MANUAL"
+    },
+    "174": {
+      "character": "BL",
+      "name": "LIGATURE_BL",
+      "description": "BL ligature for BLOCK",
+      "font_position": 174,
+      "source": "MANUAL"
+    },
+    "176": {
+      "character": "OC",
+      "name": "LIGATURE_OC",
+      "description": "OC ligature for BLOCK",
+      "font_position": 176,
+      "source": "MANUAL"
+    },
+    "178": {
+      "character": "K",
+      "name": "LIGATURE_K",
+      "description": "K final for BLOCK",
+      "font_position": 178,
+      "source": "MANUAL"
+    },
+    "180": {
+      "character": "í",
+      "name": "I_ACCENT",
+      "description": "i with accent/tilde",
+      "font_position": 180,
+      "source": "MANUAL"
+    },
+    "182": {
+      "character": "%",
+      "name": "PERCENT",
+      "description": "Percent sign",
+      "font_position": 182,
+      "source": "MANUAL"
+    },
+    "184": {
+      "character": "(",
+      "name": "LPAREN",
+      "description": "Left parenthesis",
+      "font_position": 184,
+      "source": "MANUAL"
+    },
+    "186": {
+      "character": ")",
+      "name": "RPAREN",
+      "description": "Right parenthesis",
+      "font_position": 186,
+      "source": "MANUAL"
+    },
+    "322": {
+      "character": "0",
+      "name": "DIGIT_0",
+      "tbl_hex": "0xA1",
+      "tbl_decimal": 161,
+      "font_position": 322,
+      "source": "TBL"
+    },
+    "324": {
+      "character": "1",
+      "name": "DIGIT_1",
+      "tbl_hex": "0xA2",
+      "tbl_decimal": 162,
+      "font_position": 324,
+      "source": "TBL"
+    },
+    "326": {
+      "character": "2",
+      "name": "DIGIT_2",
+      "tbl_hex": "0xA3",
+      "tbl_decimal": 163,
+      "font_position": 326,
+      "source": "TBL"
+    },
+    "328": {
+      "character": "3",
+      "name": "DIGIT_3",
+      "tbl_hex": "0xA4",
+      "tbl_decimal": 164,
+      "font_position": 328,
+      "source": "TBL"
+    },
+    "330": {
+      "character": "4",
+      "name": "DIGIT_4",
+      "tbl_hex": "0xA5",
+      "tbl_decimal": 165,
+      "font_position": 330,
+      "source": "TBL"
+    },
+    "332": {
+      "character": "5",
+      "name": "DIGIT_5",
+      "tbl_hex": "0xA6",
+      "tbl_decimal": 166,
+      "font_position": 332,
+      "source": "TBL"
+    },
+    "334": {
+      "character": "6",
+      "name": "DIGIT_6",
+      "tbl_hex": "0xA7",
+      "tbl_decimal": 167,
+      "font_position": 334,
+      "source": "TBL"
+    },
+    "336": {
+      "character": "7",
+      "name": "DIGIT_7",
+      "tbl_hex": "0xA8",
+      "tbl_decimal": 168,
+      "font_position": 336,
+      "source": "TBL"
+    },
+    "338": {
+      "character": "8",
+      "name": "DIGIT_8",
+      "tbl_hex": "0xA9",
+      "tbl_decimal": 169,
+      "font_position": 338,
+      "source": "TBL"
+    },
+    "340": {
+      "character": "9",
+      "name": "DIGIT_9",
+      "tbl_hex": "0xAA",
+      "tbl_decimal": 170,
+      "font_position": 340,
+      "source": "TBL"
+    },
+    "342": {
+      "character": "!",
+      "name": "EXCLAIM",
+      "tbl_hex": "0xAB",
+      "tbl_decimal": 171,
+      "font_position": 342,
+      "source": "TBL"
+    },
+    "344": {
+      "character": "?",
+      "name": "QUESTION",
+      "tbl_hex": "0xAC",
+      "tbl_decimal": 172,
+      "font_position": 344,
+      "source": "TBL"
+    },
+    "346": {
+      "character": ".",
+      "name": "PERIOD",
+      "tbl_hex": "0xAD",
+      "tbl_decimal": 173,
+      "font_position": 346,
+      "source": "TBL"
+    },
+    "348": {
+      "character": "-",
+      "name": "DASH",
+      "tbl_hex": "0xAE",
+      "tbl_decimal": 174,
+      "font_position": 348,
+      "source": "TBL"
+    },
+    "350": {
+      "character": "·",
+      "name": "MIDDOT",
+      "description": "Middle dot/interpunct",
+      "font_position": 350,
+      "source": "MANUAL"
+    },
+    "352": {
+      "character": "…",
+      "name": "ELLIPSIS",
+      "tbl_hex": "0xB0",
+      "tbl_decimal": 176,
+      "font_position": 352,
+      "source": "TBL"
+    },
+    "354": {
+      "character": "“",
+      "name": "LEFT_DOUBLE_QUOTE",
+      "tbl_hex": "0xB1",
+      "tbl_decimal": 177,
+      "font_position": 354,
+      "source": "TBL"
+    },
+    "356": {
+      "character": "”",
+      "name": "RIGHT_DOUBLE_QUOTE",
+      "tbl_hex": "0xB2",
+      "tbl_decimal": 178,
+      "font_position": 356,
+      "source": "TBL"
+    },
+    "358": {
+      "character": "‘",
+      "name": "LEFT_SINGLE_QUOTE",
+      "tbl_hex": "0xB3",
+      "tbl_decimal": 179,
+      "font_position": 358,
+      "source": "TBL"
+    },
+    "360": {
+      "character": "'",
+      "name": "APOSTROPHE",
+      "tbl_hex": "0xB4",
+      "tbl_decimal": 180,
+      "font_position": 360,
+      "source": "TBL"
+    },
+    "362": {
+      "character": "♂",
+      "name": "MALE_SYMBOL",
+      "tbl_hex": "0xB5",
+      "tbl_decimal": 181,
+      "font_position": 362,
+      "source": "TBL"
+    },
+    "364": {
+      "character": "♀",
+      "name": "FEMALE_SYMBOL",
+      "tbl_hex": "0xB6",
+      "tbl_decimal": 182,
+      "font_position": 364,
+      "source": "TBL"
+    },
+    "366": {
+      "character": "$",
+      "name": "DOLLAR",
+      "tbl_hex": "0xB7",
+      "tbl_decimal": 183,
+      "font_position": 366,
+      "source": "TBL"
+    },
+    "368": {
+      "character": ",",
+      "name": "COMMA",
+      "tbl_hex": "0xB8",
+      "tbl_decimal": 184,
+      "font_position": 368,
+      "source": "TBL"
+    },
+    "370": {
+      "character": "*",
+      "name": "ASTERISK",
+      "tbl_hex": "0xB9",
+      "tbl_decimal": 185,
+      "font_position": 370,
+      "source": "TBL"
+    },
+    "372": {
+      "character": "/",
+      "name": "SLASH",
+      "tbl_hex": "0xBA",
+      "tbl_decimal": 186,
+      "font_position": 372,
+      "source": "TBL"
+    },
+    "374": {
+      "character": "A",
+      "name": "UPPER_A",
+      "tbl_hex": "0xBB",
+      "tbl_decimal": 187,
+      "font_position": 374,
+      "source": "TBL"
+    },
+    "376": {
+      "character": "B",
+      "name": "UPPER_B",
+      "tbl_hex": "0xBC",
+      "tbl_decimal": 188,
+      "font_position": 376,
+      "source": "TBL"
+    },
+    "378": {
+      "character": "C",
+      "name": "UPPER_C",
+      "tbl_hex": "0xBD",
+      "tbl_decimal": 189,
+      "font_position": 378,
+      "source": "TBL"
+    },
+    "380": {
+      "character": "D",
+      "name": "UPPER_D",
+      "tbl_hex": "0xBE",
+      "tbl_decimal": 190,
+      "font_position": 380,
+      "source": "TBL"
+    },
+    "382": {
+      "character": "E",
+      "name": "UPPER_E",
+      "tbl_hex": "0xBF",
+      "tbl_decimal": 191,
+      "font_position": 382,
+      "source": "TBL"
+    },
+    "384": {
+      "character": "F",
+      "name": "UPPER_F",
+      "tbl_hex": "0xC0",
+      "tbl_decimal": 192,
+      "font_position": 384,
+      "source": "TBL"
+    },
+    "386": {
+      "character": "G",
+      "name": "UPPER_G",
+      "tbl_hex": "0xC1",
+      "tbl_decimal": 193,
+      "font_position": 386,
+      "source": "TBL"
+    },
+    "388": {
+      "character": "H",
+      "name": "UPPER_H",
+      "tbl_hex": "0xC2",
+      "tbl_decimal": 194,
+      "font_position": 388,
+      "source": "TBL"
+    },
+    "390": {
+      "character": "I",
+      "name": "UPPER_I",
+      "tbl_hex": "0xC3",
+      "tbl_decimal": 195,
+      "font_position": 390,
+      "source": "TBL"
+    },
+    "392": {
+      "character": "J",
+      "name": "UPPER_J",
+      "tbl_hex": "0xC4",
+      "tbl_decimal": 196,
+      "font_position": 392,
+      "source": "TBL"
+    },
+    "394": {
+      "character": "K",
+      "name": "UPPER_K",
+      "tbl_hex": "0xC5",
+      "tbl_decimal": 197,
+      "font_position": 394,
+      "source": "TBL"
+    },
+    "396": {
+      "character": "L",
+      "name": "UPPER_L",
+      "tbl_hex": "0xC6",
+      "tbl_decimal": 198,
+      "font_position": 396,
+      "source": "TBL"
+    },
+    "398": {
+      "character": "M",
+      "name": "UPPER_M",
+      "tbl_hex": "0xC7",
+      "tbl_decimal": 199,
+      "font_position": 398,
+      "source": "TBL"
+    },
+    "400": {
+      "character": "N",
+      "name": "UPPER_N",
+      "tbl_hex": "0xC8",
+      "tbl_decimal": 200,
+      "font_position": 400,
+      "source": "TBL"
+    },
+    "402": {
+      "character": "O",
+      "name": "UPPER_O",
+      "tbl_hex": "0xC9",
+      "tbl_decimal": 201,
+      "font_position": 402,
+      "source": "TBL"
+    },
+    "404": {
+      "character": "P",
+      "name": "UPPER_P",
+      "tbl_hex": "0xCA",
+      "tbl_decimal": 202,
+      "font_position": 404,
+      "source": "TBL"
+    },
+    "406": {
+      "character": "Q",
+      "name": "UPPER_Q",
+      "tbl_hex": "0xCB",
+      "tbl_decimal": 203,
+      "font_position": 406,
+      "source": "TBL"
+    },
+    "408": {
+      "character": "R",
+      "name": "UPPER_R",
+      "tbl_hex": "0xCC",
+      "tbl_decimal": 204,
+      "font_position": 408,
+      "source": "TBL"
+    },
+    "410": {
+      "character": "S",
+      "name": "UPPER_S",
+      "tbl_hex": "0xCD",
+      "tbl_decimal": 205,
+      "font_position": 410,
+      "source": "TBL"
+    },
+    "412": {
+      "character": "T",
+      "name": "UPPER_T",
+      "tbl_hex": "0xCE",
+      "tbl_decimal": 206,
+      "font_position": 412,
+      "source": "TBL"
+    },
+    "414": {
+      "character": "U",
+      "name": "UPPER_U",
+      "tbl_hex": "0xCF",
+      "tbl_decimal": 207,
+      "font_position": 414,
+      "source": "TBL"
+    },
+    "416": {
+      "character": "V",
+      "name": "UPPER_V",
+      "tbl_hex": "0xD0",
+      "tbl_decimal": 208,
+      "font_position": 416,
+      "source": "TBL"
+    },
+    "418": {
+      "character": "W",
+      "name": "UPPER_W",
+      "tbl_hex": "0xD1",
+      "tbl_decimal": 209,
+      "font_position": 418,
+      "source": "TBL"
+    },
+    "420": {
+      "character": "X",
+      "name": "UPPER_X",
+      "tbl_hex": "0xD2",
+      "tbl_decimal": 210,
+      "font_position": 420,
+      "source": "TBL"
+    },
+    "422": {
+      "character": "Y",
+      "name": "UPPER_Y",
+      "tbl_hex": "0xD3",
+      "tbl_decimal": 211,
+      "font_position": 422,
+      "source": "TBL"
+    },
+    "424": {
+      "character": "Z",
+      "name": "UPPER_Z",
+      "tbl_hex": "0xD4",
+      "tbl_decimal": 212,
+      "font_position": 424,
+      "source": "TBL"
+    },
+    "426": {
+      "character": "a",
+      "name": "LOWER_A",
+      "tbl_hex": "0xD5",
+      "tbl_decimal": 213,
+      "font_position": 426,
+      "source": "TBL"
+    },
+    "428": {
+      "character": "b",
+      "name": "LOWER_B",
+      "tbl_hex": "0xD6",
+      "tbl_decimal": 214,
+      "font_position": 428,
+      "source": "TBL"
+    },
+    "430": {
+      "character": "c",
+      "name": "LOWER_C",
+      "tbl_hex": "0xD7",
+      "tbl_decimal": 215,
+      "font_position": 430,
+      "source": "TBL"
+    },
+    "432": {
+      "character": "d",
+      "name": "LOWER_D",
+      "tbl_hex": "0xD8",
+      "tbl_decimal": 216,
+      "font_position": 432,
+      "source": "TBL"
+    },
+    "434": {
+      "character": "e",
+      "name": "LOWER_E",
+      "tbl_hex": "0xD9",
+      "tbl_decimal": 217,
+      "font_position": 434,
+      "source": "TBL"
+    },
+    "436": {
+      "character": "f",
+      "name": "LOWER_F",
+      "tbl_hex": "0xDA",
+      "tbl_decimal": 218,
+      "font_position": 436,
+      "source": "TBL"
+    },
+    "438": {
+      "character": "g",
+      "name": "LOWER_G",
+      "tbl_hex": "0xDB",
+      "tbl_decimal": 219,
+      "font_position": 438,
+      "source": "TBL"
+    },
+    "440": {
+      "character": "h",
+      "name": "LOWER_H",
+      "tbl_hex": "0xDC",
+      "tbl_decimal": 220,
+      "font_position": 440,
+      "source": "TBL"
+    },
+    "442": {
+      "character": "i",
+      "name": "LOWER_I",
+      "tbl_hex": "0xDD",
+      "tbl_decimal": 221,
+      "font_position": 442,
+      "source": "TBL"
+    },
+    "444": {
+      "character": "j",
+      "name": "LOWER_J",
+      "tbl_hex": "0xDE",
+      "tbl_decimal": 222,
+      "font_position": 444,
+      "source": "TBL"
+    },
+    "446": {
+      "character": "k",
+      "name": "LOWER_K",
+      "tbl_hex": "0xDF",
+      "tbl_decimal": 223,
+      "font_position": 446,
+      "source": "TBL"
+    },
+    "448": {
+      "character": "l",
+      "name": "LOWER_L",
+      "tbl_hex": "0xE0",
+      "tbl_decimal": 224,
+      "font_position": 448,
+      "source": "TBL"
+    },
+    "450": {
+      "character": "m",
+      "name": "LOWER_M",
+      "tbl_hex": "0xE1",
+      "tbl_decimal": 225,
+      "font_position": 450,
+      "source": "TBL"
+    },
+    "452": {
+      "character": "n",
+      "name": "LOWER_N",
+      "tbl_hex": "0xE2",
+      "tbl_decimal": 226,
+      "font_position": 452,
+      "source": "TBL"
+    },
+    "454": {
+      "character": "o",
+      "name": "LOWER_O",
+      "tbl_hex": "0xE3",
+      "tbl_decimal": 227,
+      "font_position": 454,
+      "source": "TBL"
+    },
+    "456": {
+      "character": "p",
+      "name": "LOWER_P",
+      "tbl_hex": "0xE4",
+      "tbl_decimal": 228,
+      "font_position": 456,
+      "source": "TBL"
+    },
+    "458": {
+      "character": "q",
+      "name": "LOWER_Q",
+      "tbl_hex": "0xE5",
+      "tbl_decimal": 229,
+      "font_position": 458,
+      "source": "TBL"
+    },
+    "460": {
+      "character": "r",
+      "name": "LOWER_R",
+      "tbl_hex": "0xE6",
+      "tbl_decimal": 230,
+      "font_position": 460,
+      "source": "TBL"
+    },
+    "462": {
+      "character": "s",
+      "name": "LOWER_S",
+      "tbl_hex": "0xE7",
+      "tbl_decimal": 231,
+      "font_position": 462,
+      "source": "TBL"
+    },
+    "464": {
+      "character": "t",
+      "name": "LOWER_T",
+      "tbl_hex": "0xE8",
+      "tbl_decimal": 232,
+      "font_position": 464,
+      "source": "TBL"
+    },
+    "466": {
+      "character": "u",
+      "name": "LOWER_U",
+      "tbl_hex": "0xE9",
+      "tbl_decimal": 233,
+      "font_position": 466,
+      "source": "TBL"
+    },
+    "468": {
+      "character": "v",
+      "name": "LOWER_V",
+      "tbl_hex": "0xEA",
+      "tbl_decimal": 234,
+      "font_position": 468,
+      "source": "TBL"
+    },
+    "470": {
+      "character": "w",
+      "name": "LOWER_W",
+      "tbl_hex": "0xEB",
+      "tbl_decimal": 235,
+      "font_position": 470,
+      "source": "TBL"
+    },
+    "472": {
+      "character": "x",
+      "name": "LOWER_X",
+      "tbl_hex": "0xEC",
+      "tbl_decimal": 236,
+      "font_position": 472,
+      "source": "TBL"
+    },
+    "474": {
+      "character": "y",
+      "name": "LOWER_Y",
+      "tbl_hex": "0xED",
+      "tbl_decimal": 237,
+      "font_position": 474,
+      "source": "TBL"
+    },
+    "476": {
+      "character": "z",
+      "name": "LOWER_Z",
+      "tbl_hex": "0xEE",
+      "tbl_decimal": 238,
+      "font_position": 476,
+      "source": "TBL"
+    },
+    "478": {
+      "character": "▶",
+      "name": "ARROW_RIGHT_MARKER",
+      "tbl_hex": "0xEF",
+      "tbl_decimal": 239,
+      "font_position": 478,
+      "source": "TBL"
+    },
+    "480": {
+      "character": ":",
+      "name": "COLON",
+      "tbl_hex": "0xF0",
+      "tbl_decimal": 240,
+      "font_position": 480,
+      "source": "TBL"
+    },
+    "482": {
+      "character": "Ä",
+      "name": "A_UMLAUT_UPPER",
+      "tbl_hex": "0xF1",
+      "tbl_decimal": 241,
+      "font_position": 482,
+      "source": "TBL"
+    },
+    "484": {
+      "character": "Ö",
+      "name": "O_UMLAUT_UPPER",
+      "tbl_hex": "0xF2",
+      "tbl_decimal": 242,
+      "font_position": 484,
+      "source": "TBL"
+    },
+    "486": {
+      "character": "Ü",
+      "name": "U_UMLAUT_UPPER",
+      "tbl_hex": "0xF3",
+      "tbl_decimal": 243,
+      "font_position": 486,
+      "source": "TBL"
+    },
+    "488": {
+      "character": "ä",
+      "name": "A_UMLAUT_LOWER",
+      "tbl_hex": "0xF4",
+      "tbl_decimal": 244,
+      "font_position": 488,
+      "source": "TBL"
+    },
+    "490": {
+      "character": "ö",
+      "name": "O_UMLAUT_LOWER",
+      "tbl_hex": "0xF5",
+      "tbl_decimal": 245,
+      "font_position": 490,
+      "source": "TBL"
+    },
+    "492": {
+      "character": "ü",
+      "name": "U_UMLAUT_LOWER",
+      "tbl_hex": "0xF6",
+      "tbl_decimal": 246,
+      "font_position": 492,
+      "source": "TBL"
+    },
+    "2": {
+      "character": "À",
+      "name": "A_GRAVE_UPPER",
+      "tbl_hex": "0x01",
+      "tbl_decimal": 1,
+      "font_position": 2,
+      "source": "TBL"
+    },
+    "4": {
+      "character": "Á",
+      "name": "A_ACUTE_UPPER",
+      "tbl_hex": "0x02",
+      "tbl_decimal": 2,
+      "font_position": 4,
+      "source": "TBL"
+    },
+    "6": {
+      "character": "Â",
+      "name": "A_CIRCUMFLEX_UPPER",
+      "tbl_hex": "0x03",
+      "tbl_decimal": 3,
+      "font_position": 6,
+      "source": "TBL"
+    },
+    "8": {
+      "character": "Ç",
+      "name": "C_CEDILLA_UPPER",
+      "tbl_hex": "0x04",
+      "tbl_decimal": 4,
+      "font_position": 8,
+      "source": "TBL"
+    },
+    "10": {
+      "character": "È",
+      "name": "E_GRAVE_UPPER",
+      "tbl_hex": "0x05",
+      "tbl_decimal": 5,
+      "font_position": 10,
+      "source": "TBL"
+    },
+    "12": {
+      "character": "É",
+      "name": "E_ACUTE_UPPER",
+      "tbl_hex": "0x06",
+      "tbl_decimal": 6,
+      "font_position": 12,
+      "source": "TBL"
+    },
+    "14": {
+      "character": "Ê",
+      "name": "E_CIRCUMFLEX_UPPER",
+      "tbl_hex": "0x07",
+      "tbl_decimal": 7,
+      "font_position": 14,
+      "source": "TBL"
+    },
+    "16": {
+      "character": "Ë",
+      "name": "E_DIAERESIS_UPPER",
+      "tbl_hex": "0x08",
+      "tbl_decimal": 8,
+      "font_position": 16,
+      "source": "TBL"
+    },
+    "18": {
+      "character": "Ì",
+      "name": "I_GRAVE_UPPER",
+      "tbl_hex": "0x09",
+      "tbl_decimal": 9,
+      "font_position": 18,
+      "source": "TBL"
+    },
+    "22": {
+      "character": "Î",
+      "name": "I_CIRCUMFLEX_UPPER",
+      "tbl_hex": "0x0B",
+      "tbl_decimal": 11,
+      "font_position": 22,
+      "source": "TBL"
+    },
+    "24": {
+      "character": "Ï",
+      "name": "I_DIAERESIS_UPPER",
+      "tbl_hex": "0x0C",
+      "tbl_decimal": 12,
+      "font_position": 24,
+      "source": "TBL"
+    },
+    "26": {
+      "character": "Ò",
+      "name": "O_GRAVE_UPPER",
+      "tbl_hex": "0x0D",
+      "tbl_decimal": 13,
+      "font_position": 26,
+      "source": "TBL"
+    },
+    "28": {
+      "character": "Ó",
+      "name": "O_ACUTE_UPPER",
+      "tbl_hex": "0x0E",
+      "tbl_decimal": 14,
+      "font_position": 28,
+      "source": "TBL"
+    },
+    "30": {
+      "character": "Ô",
+      "name": "O_CIRCUMFLEX_UPPER",
+      "tbl_hex": "0x0F",
+      "tbl_decimal": 15,
+      "font_position": 30,
+      "source": "TBL"
+    },
+    "32": {
+      "character": "Œ",
+      "name": "OE_LIGATURE_UPPER",
+      "tbl_hex": "0x10",
+      "tbl_decimal": 16,
+      "font_position": 32,
+      "source": "TBL"
+    },
+    "34": {
+      "character": "Ù",
+      "name": "U_GRAVE_UPPER",
+      "tbl_hex": "0x11",
+      "tbl_decimal": 17,
+      "font_position": 34,
+      "source": "TBL"
+    },
+    "36": {
+      "character": "Ú",
+      "name": "U_ACUTE_UPPER",
+      "tbl_hex": "0x12",
+      "tbl_decimal": 18,
+      "font_position": 36,
+      "source": "TBL"
+    },
+    "38": {
+      "character": "Û",
+      "name": "U_CIRCUMFLEX_UPPER",
+      "tbl_hex": "0x13",
+      "tbl_decimal": 19,
+      "font_position": 38,
+      "source": "TBL"
+    },
+    "40": {
+      "character": "Ñ",
+      "name": "N_TILDE_UPPER",
+      "tbl_hex": "0x14",
+      "tbl_decimal": 20,
+      "font_position": 40,
+      "source": "TBL"
+    },
+    "44": {
+      "character": "à",
+      "name": "A_GRAVE_LOWER",
+      "tbl_hex": "0x16",
+      "tbl_decimal": 22,
+      "font_position": 44,
+      "source": "TBL"
+    },
+    "46": {
+      "character": "á",
+      "name": "A_ACUTE_LOWER",
+      "tbl_hex": "0x17",
+      "tbl_decimal": 23,
+      "font_position": 46,
+      "source": "TBL"
+    },
+    "50": {
+      "character": "ç",
+      "name": "C_CEDILLA_LOWER",
+      "tbl_hex": "0x19",
+      "tbl_decimal": 25,
+      "font_position": 50,
+      "source": "TBL"
+    },
+    "52": {
+      "character": "è",
+      "name": "E_GRAVE_LOWER",
+      "tbl_hex": "0x1A",
+      "tbl_decimal": 26,
+      "font_position": 52,
+      "source": "TBL"
+    },
+    "56": {
+      "character": "ê",
+      "name": "E_CIRCUMFLEX_LOWER",
+      "tbl_hex": "0x1C",
+      "tbl_decimal": 28,
+      "font_position": 56,
+      "source": "TBL"
+    },
+    "58": {
+      "character": "ë",
+      "name": "E_DIAERESIS_LOWER",
+      "tbl_hex": "0x1D",
+      "tbl_decimal": 29,
+      "font_position": 58,
+      "source": "TBL"
+    },
+    "60": {
+      "character": "ì",
+      "name": "I_GRAVE_LOWER",
+      "tbl_hex": "0x1E",
+      "tbl_decimal": 30,
+      "font_position": 60,
+      "source": "TBL"
+    },
+    "64": {
+      "character": "î",
+      "name": "I_CIRCUMFLEX_LOWER",
+      "tbl_hex": "0x20",
+      "tbl_decimal": 32,
+      "font_position": 64,
+      "source": "TBL"
+    },
+    "66": {
+      "character": "ï",
+      "name": "I_DIAERESIS_LOWER",
+      "tbl_hex": "0x21",
+      "tbl_decimal": 33,
+      "font_position": 66,
+      "source": "TBL"
+    },
+    "68": {
+      "character": "ò",
+      "name": "O_GRAVE_LOWER",
+      "tbl_hex": "0x22",
+      "tbl_decimal": 34,
+      "font_position": 68,
+      "source": "TBL"
+    },
+    "70": {
+      "character": "ó",
+      "name": "O_ACUTE_LOWER",
+      "tbl_hex": "0x23",
+      "tbl_decimal": 35,
+      "font_position": 70,
+      "source": "TBL"
+    },
+    "72": {
+      "character": "ô",
+      "name": "O_CIRCUMFLEX_LOWER",
+      "tbl_hex": "0x24",
+      "tbl_decimal": 36,
+      "font_position": 72,
+      "source": "TBL"
+    },
+    "74": {
+      "character": "œ",
+      "name": "OE_LIGATURE_LOWER",
+      "tbl_hex": "0x25",
+      "tbl_decimal": 37,
+      "font_position": 74,
+      "source": "TBL"
+    },
+    "76": {
+      "character": "ù",
+      "name": "U_GRAVE_LOWER",
+      "tbl_hex": "0x26",
+      "tbl_decimal": 38,
+      "font_position": 76,
+      "source": "TBL"
+    },
+    "78": {
+      "character": "ú",
+      "name": "U_ACUTE_LOWER",
+      "tbl_hex": "0x27",
+      "tbl_decimal": 39,
+      "font_position": 78,
+      "source": "TBL"
+    },
+    "80": {
+      "character": "û",
+      "name": "U_CIRCUMFLEX_LOWER",
+      "tbl_hex": "0x28",
+      "tbl_decimal": 40,
+      "font_position": 80,
+      "source": "TBL"
+    },
+    "82": {
+      "character": "ñ",
+      "name": "N_TILDE_LOWER",
+      "tbl_hex": "0x29",
+      "tbl_decimal": 41,
+      "font_position": 82,
+      "source": "TBL"
+    },
+    "84": {
+      "character": "º",
+      "name": "MASCULINE_ORDINAL",
+      "tbl_hex": "0x2A",
+      "tbl_decimal": 42,
+      "font_position": 84,
+      "source": "TBL"
+    },
+    "86": {
+      "character": "ª",
+      "name": "FEMININE_ORDINAL",
+      "tbl_hex": "0x2B",
+      "tbl_decimal": 43,
+      "font_position": 86,
+      "source": "TBL"
+    },
+    "90": {
+      "character": "&",
+      "name": "AMPERSAND",
+      "tbl_hex": "0x2D",
+      "tbl_decimal": 45,
+      "font_position": 90,
+      "source": "TBL"
+    },
+    "92": {
+      "character": "+",
+      "name": "PLUS",
+      "tbl_hex": "0x2E",
+      "tbl_decimal": 46,
+      "font_position": 92,
+      "source": "TBL"
+    },
+    "104": {
+      "character": "Lv",
+      "name": "LEVEL_ABBREVIATION",
+      "tbl_hex": "0x34",
+      "tbl_decimal": 52,
+      "font_position": 104,
+      "source": "TBL"
+    },
+    "106": {
+      "character": "=",
+      "name": "EQUALS",
+      "tbl_hex": "0x35",
+      "tbl_decimal": 53,
+      "font_position": 106,
+      "source": "TBL"
+    }
+  },
+  "ascii_to_position": {
+    " ": 0,
+    "0": 322,
+    "1": 324,
+    "2": 326,
+    "3": 328,
+    "4": 330,
+    "5": 332,
+    "6": 334,
+    "7": 336,
+    "8": 338,
+    "9": 340,
+    "!": 342,
+    "?": 344,
+    ".": 346,
+    "-": 348,
+    "'": 360,
+    "$": 366,
+    ",": 368,
+    "*": 370,
+    "/": 372,
+    "A": 374,
+    "B": 376,
+    "C": 378,
+    "D": 380,
+    "E": 382,
+    "F": 384,
+    "G": 386,
+    "H": 388,
+    "I": 390,
+    "J": 392,
+    "K": 394,
+    "L": 396,
+    "M": 398,
+    "N": 400,
+    "O": 402,
+    "P": 404,
+    "Q": 406,
+    "R": 408,
+    "S": 410,
+    "T": 412,
+    "U": 414,
+    "V": 416,
+    "W": 418,
+    "X": 420,
+    "Y": 422,
+    "Z": 424,
+    "a": 426,
+    "b": 428,
+    "c": 430,
+    "d": 432,
+    "e": 434,
+    "f": 436,
+    "g": 438,
+    "h": 440,
+    "i": 442,
+    "j": 444,
+    "k": 446,
+    "l": 448,
+    "m": 450,
+    "n": 452,
+    "o": 454,
+    "p": 456,
+    "q": 458,
+    "r": 460,
+    "s": 462,
+    "t": 464,
+    "u": 466,
+    "v": 468,
+    "w": 470,
+    "x": 472,
+    "y": 474,
+    "z": 476,
+    ":": 480,
+    "%": 182,
+    "(": 184,
+    ")": 186,
+    "é": 54,
+    "♀": 364,
+    "OC": 176,
+    "PO": 170,
+    "▶": 478,
+    "BL": 174,
+    "ä": 488,
+    "KE": 172,
+    "ö": 490,
+    "Ä": 482,
+    "·": 350,
+    "¿": 162,
+    "PK": 166,
+    "MN": 168,
+    "♂": 362,
+    "ß": 42,
+    "Ü": 486,
+    "¡": 164,
+    "Ö": 484,
+    "ü": 492,
+    "í": 180,
+    "À": 2,
+    "Á": 4,
+    "Â": 6,
+    "Ç": 8,
+    "È": 10,
+    "É": 12,
+    "Ê": 14,
+    "Ë": 16,
+    "Ì": 18,
+    "Î": 22,
+    "Ï": 24,
+    "Ò": 26,
+    "Ó": 28,
+    "Ô": 30,
+    "Œ": 32,
+    "Ù": 34,
+    "Ú": 36,
+    "Û": 38,
+    "Ñ": 40,
+    "à": 44,
+    "á": 46,
+    "ç": 50,
+    "è": 52,
+    "ê": 56,
+    "ë": 58,
+    "ì": 60,
+    "î": 64,
+    "ï": 66,
+    "ò": 68,
+    "ó": 70,
+    "ô": 72,
+    "œ": 74,
+    "ù": 76,
+    "ú": 78,
+    "û": 80,
+    "ñ": 82,
+    "º": 84,
+    "ª": 86,
+    "&": 90,
+    "+": 92,
+    "Lv": 104,
+    "=": 106,
+    "“": 354,
+    "”": 356,
+    "‘": 358,
+    "…": 352
+  }
+}

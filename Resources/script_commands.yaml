@@ -1,0 +1,313 @@
+# Pokemon Generation 3 Script Command Definitions
+# Format: opcode -> name, args, description
+# Argument types:
+#   b = byte (1 byte)
+#   w = word (2 bytes, little-endian)
+#   d = dword/pointer (4 bytes)
+#   v = variable reference (2 bytes)
+#   f = flag reference (2 bytes)
+#   i = item ID (2 bytes)
+#   p = pokemon species (2 bytes)
+#   M = move ID (2 bytes)
+
+commands:
+  # Flow control - Basic
+  0x00: { name: "nop", args: "", desc: "No operation - does nothing" }
+  0x01: { name: "nop1", args: "", desc: "No operation variant" }
+  0x02: { name: "end", args: "", desc: "Terminates script execution" }
+  0x03: { name: "return", args: "", desc: "Returns from a called script to the caller" }
+  0x04: { name: "call", args: "d", desc: "Calls script at address, returns here after" }
+  0x05: { name: "goto", args: "d", desc: "Unconditional jump to address" }
+  0x06: { name: "goto_if", args: "bd", desc: "Conditional jump: if last compare matches condition, goto address" }
+  0x07: { name: "call_if", args: "bd", desc: "Conditional call: if last compare matches condition, call address" }
+  0x08: { name: "gotostd", args: "b", desc: "Jump to standard script by ID" }
+  0x09: { name: "callstd", args: "b", desc: "Call standard script by ID" }
+  0x0A: { name: "gotostdif", args: "bb", desc: "Conditional jump to standard script" }
+  0x0B: { name: "callstdif", args: "bb", desc: "Conditional call to standard script" }
+  0x0C: { name: "gotoram", args: "", desc: "Jump to script in RAM (for Mystery Events)" }
+  0x0D: { name: "killscript", args: "", desc: "Terminates script and clears script state" }
+
+  # Memory/Variable operations
+  0x0E: { name: "setmysteryeventstatus", args: "b", desc: "Sets Mystery Event script status byte" }
+  0x0F: { name: "loadword", args: "bd", desc: "Load word address into script bank" }
+  0x10: { name: "loadbyte", args: "bb", desc: "Load byte value into script bank" }
+  0x11: { name: "writebytetoaddr", args: "bd", desc: "Write byte to memory address" }
+  0x12: { name: "loadbytefromaddr", args: "bd", desc: "Load byte from memory address into bank" }
+  0x13: { name: "setptrbyte", args: "bd", desc: "Set byte at pointer address" }
+  0x14: { name: "copylocal", args: "bb", desc: "Copy between local script banks" }
+  0x15: { name: "copybyte", args: "dd", desc: "Copy byte from one address to another" }
+
+  # Variable operations
+  0x16: { name: "setvar", args: "vw", desc: "Set variable to immediate value" }
+  0x17: { name: "addvar", args: "vw", desc: "Add immediate value to variable" }
+  0x18: { name: "subvar", args: "vw", desc: "Subtract immediate value from variable" }
+  0x19: { name: "copyvar", args: "vv", desc: "Copy value from one variable to another" }
+  0x1A: { name: "setorcopyvar", args: "vw", desc: "Set var to value, or copy if source >= 0x4000" }
+
+  # Comparison operations
+  0x1B: { name: "compare_local_to_local", args: "bb", desc: "Compare two local script banks" }
+  0x1C: { name: "compare_local_to_value", args: "bw", desc: "Compare local bank to immediate value" }
+  0x1D: { name: "compare_local_to_addr", args: "bd", desc: "Compare local bank to value at address" }
+  0x1E: { name: "compare_addr_to_local", args: "db", desc: "Compare value at address to local bank" }
+  0x1F: { name: "compare_addr_to_value", args: "db", desc: "Compare value at address to immediate" }
+  0x20: { name: "compare_addr_to_addr", args: "dd", desc: "Compare values at two addresses" }
+  0x21: { name: "compare", args: "vw", desc: "Compare variable to immediate value" }
+  0x22: { name: "comparevars", args: "vv", desc: "Compare two variables" }
+
+  # ASM/Special calls
+  0x23: { name: "callnative", args: "d", desc: "Call native ARM/Thumb function" }
+  0x24: { name: "gotonative", args: "d", desc: "Jump to native function (no return)" }
+  0x25: { name: "special", args: "w", desc: "Call special function by ID" }
+  0x26: { name: "specialvar", args: "vw", desc: "Call special, store result in variable" }
+  0x27: { name: "waitstate", args: "", desc: "Wait for special/pokemon cry/fanfare to finish" }
+  0x28: { name: "delay", args: "w", desc: "Pause script for N frames" }
+
+  # Flag operations
+  0x29: { name: "setflag", args: "f", desc: "Set flag to TRUE" }
+  0x2A: { name: "clearflag", args: "f", desc: "Set flag to FALSE" }
+  0x2B: { name: "checkflag", args: "f", desc: "Check flag, set LASTRESULT (0x800D)" }
+
+  # Time
+  0x2C: { name: "initclock", args: "ww", desc: "Initialize real-time clock" }
+  0x2D: { name: "dodailyevents", args: "", desc: "Process daily events" }
+  0x2E: { name: "gettime", args: "", desc: "Get current time into variables" }
+
+  # Audio
+  0x2F: { name: "playse", args: "w", desc: "Play sound effect" }
+  0x30: { name: "waitse", args: "", desc: "Wait for sound effect to finish" }
+  0x31: { name: "playfanfare", args: "w", desc: "Play fanfare music" }
+  0x32: { name: "waitfanfare", args: "", desc: "Wait for fanfare to finish" }
+  0x33: { name: "playbgm", args: "wb", desc: "Play background music (song ID, ?)" }
+  0x34: { name: "savebgm", args: "w", desc: "Save current BGM for later restoration" }
+  0x35: { name: "fadedefaultbgm", args: "", desc: "Fade to map's default BGM" }
+  0x36: { name: "fadenewbgm", args: "w", desc: "Fade to new BGM" }
+  0x37: { name: "fadeoutbgm", args: "b", desc: "Fade out current BGM" }
+  0x38: { name: "fadeinbgm", args: "b", desc: "Fade in BGM" }
+
+  # Warp/Map
+  0x39: { name: "warp", args: "wbbbb", desc: "Warp to map (mapGroup, mapNum, warpId, x, y)" }
+  0x3A: { name: "warpsilent", args: "wbbbb", desc: "Silent warp (no animation)" }
+  0x3B: { name: "warpdoor", args: "wbbbb", desc: "Door warp animation" }
+  0x3C: { name: "warphole", args: "wb", desc: "Fall through hole warp" }
+  0x3D: { name: "warpteleport", args: "wbbbb", desc: "Teleport warp animation" }
+  0x3E: { name: "setwarp", args: "wbbbb", desc: "Set warp destination without warping" }
+  0x3F: { name: "setdynamicwarp", args: "wbbbb", desc: "Set dynamic warp point" }
+  0x40: { name: "setdivewarp", args: "wbbbb", desc: "Set dive warp destination" }
+  0x41: { name: "setholewarp", args: "wbbbb", desc: "Set hole warp destination" }
+
+  # Player/Object position
+  0x42: { name: "getplayerxy", args: "vv", desc: "Get player X,Y into variables" }
+  0x43: { name: "getpartysize", args: "", desc: "Get party size into LASTRESULT" }
+
+  # Item operations
+  0x44: { name: "additem", args: "iw", desc: "Add item(s) to bag (itemId, quantity)" }
+  0x45: { name: "removeitem", args: "iw", desc: "Remove item(s) from bag" }
+  0x46: { name: "checkitemspace", args: "iw", desc: "Check if bag has room for items" }
+  0x47: { name: "checkitem", args: "iw", desc: "Check if player has item(s)" }
+  0x48: { name: "checkitemtype", args: "i", desc: "Check item pocket type" }
+  0x49: { name: "givepcitem", args: "iw", desc: "Give item to PC storage" }
+  0x4A: { name: "checkpcitem", args: "iw", desc: "Check PC for item" }
+
+  # Decoration
+  0x4B: { name: "givedecoration", args: "v", desc: "Give decoration to secret base" }
+  0x4C: { name: "takedecoration", args: "v", desc: "Remove decoration" }
+  0x4D: { name: "checkdecor", args: "v", desc: "Check for decoration" }
+  0x4E: { name: "checkdecorspace", args: "v", desc: "Check decoration storage space" }
+
+  # Movement
+  0x4F: { name: "applymovement", args: "vd", desc: "Apply movement script to object" }
+  0x50: { name: "applymovementat", args: "vdbb", desc: "Apply movement at coords" }
+  0x51: { name: "waitmovement", args: "v", desc: "Wait for object movement to finish" }
+  0x52: { name: "waitmovementat", args: "vbb", desc: "Wait for movement at coords" }
+
+  # Object operations
+  0x53: { name: "removeobject", args: "v", desc: "Remove object event from map" }
+  0x54: { name: "removeobjectat", args: "vbb", desc: "Remove object at coords" }
+  0x55: { name: "addobject", args: "v", desc: "Add/spawn object event" }
+  0x56: { name: "addobjectat", args: "vbb", desc: "Add object at coords" }
+  0x57: { name: "setobjectxy", args: "vww", desc: "Set object position" }
+  0x58: { name: "showobjectat", args: "vbb", desc: "Show hidden object" }
+  0x59: { name: "hideobjectat", args: "vbb", desc: "Hide object" }
+  0x5A: { name: "faceplayer", args: "", desc: "Turn NPC to face player" }
+  0x5B: { name: "turnobject", args: "vb", desc: "Turn object to face direction" }
+
+  # Battle
+  0x5C: { name: "trainerbattle", args: "bwwd", desc: "Initiate trainer battle" }
+  0x5D: { name: "trainerbattlebegin", args: "", desc: "Begin the trainer battle" }
+  0x5E: { name: "gotopostbattlescript", args: "", desc: "Jump to post-battle script" }
+  0x5F: { name: "gotobeatenscript", args: "", desc: "Jump to trainer-beaten script" }
+  0x60: { name: "checktrainerflag", args: "w", desc: "Check if trainer already beaten" }
+  0x61: { name: "settrainerflag", args: "w", desc: "Set trainer as beaten" }
+  0x62: { name: "cleartrainerflag", args: "w", desc: "Clear trainer beaten flag" }
+
+  # More object ops
+  0x63: { name: "setobjectxyperm", args: "vww", desc: "Set object permanent position" }
+  0x64: { name: "moveobjectoffscreen", args: "v", desc: "Move object off-screen" }
+  0x65: { name: "setobjectmovementtype", args: "vb", desc: "Set object movement type" }
+
+  # Messages
+  0x66: { name: "waitmessage", args: "", desc: "Wait for message box to finish" }
+  0x67: { name: "message", args: "d", desc: "Display message from pointer" }
+  0x68: { name: "closemessage", args: "", desc: "Close message box" }
+  0x69: { name: "lockall", args: "", desc: "Lock all objects (freeze movement)" }
+  0x6A: { name: "lock", args: "", desc: "Lock current object" }
+  0x6B: { name: "releaseall", args: "", desc: "Release all locked objects" }
+  0x6C: { name: "release", args: "", desc: "Release current object" }
+  0x6D: { name: "waitbuttonpress", args: "", desc: "Wait for A/B button press" }
+
+  # Choice boxes
+  0x6E: { name: "yesnobox", args: "bb", desc: "Display Yes/No choice box at x,y" }
+  0x6F: { name: "multichoice", args: "bbbb", desc: "Display multiple choice box" }
+  0x70: { name: "multichoicedefault", args: "bbbbb", desc: "Multi-choice with default selection" }
+  0x71: { name: "multichoicegrid", args: "bbbbb", desc: "Multi-choice in grid layout" }
+  0x72: { name: "drawbox", args: "bbbb", desc: "Draw box on screen" }
+  0x73: { name: "erasebox", args: "bbbb", desc: "Erase box" }
+  0x74: { name: "drawboxtext", args: "bbbb", desc: "Draw box with text" }
+
+  # Pokemon picture
+  0x75: { name: "drawmonpic", args: "pbb", desc: "Draw Pokemon picture (species, x, y)" }
+  0x76: { name: "erasemonpic", args: "", desc: "Erase Pokemon picture" }
+  0x77: { name: "drawcontestwinner", args: "b", desc: "Draw contest winner portrait" }
+
+  # Pokemon commands
+  0x78: { name: "braillemessage", args: "d", desc: "Display braille message" }
+  0x79: { name: "givemon", args: "pwwwww", desc: "Give Pokemon (species,level,item,?,?,?)" }
+  0x7A: { name: "giveegg", args: "p", desc: "Give Pokemon egg" }
+  0x7B: { name: "setmonmove", args: "bbM", desc: "Set move for party Pokemon (slot, moveSlot, moveId)" }
+  0x7C: { name: "checkpartymove", args: "M", desc: "Check if party knows move" }
+
+  # Buffer commands
+  0x7D: { name: "bufferspeciesname", args: "bp", desc: "Buffer species name to STR_VAR" }
+  0x7E: { name: "bufferleadmonspeciesname", args: "b", desc: "Buffer lead Pokemon's species" }
+  0x7F: { name: "bufferpartymonnick", args: "bb", desc: "Buffer party mon nickname" }
+  0x80: { name: "bufferitemname", args: "bi", desc: "Buffer item name" }
+  0x81: { name: "bufferdecorationname", args: "bv", desc: "Buffer decoration name" }
+  0x82: { name: "buffermovename", args: "bM", desc: "Buffer move name" }
+  0x83: { name: "buffernumberstring", args: "bv", desc: "Buffer number as string" }
+  0x84: { name: "bufferstdstring", args: "bw", desc: "Buffer standard string" }
+  0x85: { name: "bufferstring", args: "bd", desc: "Buffer custom string from address" }
+
+  # Shop
+  0x86: { name: "pokemart", args: "d", desc: "Open Pokemart with item list" }
+  0x87: { name: "pokemartdecoration", args: "d", desc: "Open decoration mart" }
+  0x88: { name: "pokemartdecoration2", args: "d", desc: "Decoration mart variant" }
+
+  # Minigames
+  0x89: { name: "playslotmachine", args: "v", desc: "Play slot machine game" }
+  0x8A: { name: "setberrytree", args: "bbb", desc: "Set berry tree state" }
+  0x8B: { name: "choosecontestmon", args: "", desc: "Choose Pokemon for contest" }
+  0x8C: { name: "startcontest", args: "", desc: "Start Pokemon contest" }
+  0x8D: { name: "showcontestresults", args: "", desc: "Show contest results" }
+  0x8E: { name: "contestlinktransfer", args: "", desc: "Contest link transfer" }
+
+  # Random/Money
+  0x8F: { name: "random", args: "w", desc: "Generate random number 0 to N-1" }
+  0x90: { name: "addmoney", args: "db", desc: "Add money to player" }
+  0x91: { name: "removemoney", args: "db", desc: "Remove money from player" }
+  0x92: { name: "checkmoney", args: "db", desc: "Check if player has enough money" }
+  0x93: { name: "showmoneybox", args: "bb", desc: "Show money box at x,y" }
+  0x94: { name: "hidemoneybox", args: "bb", desc: "Hide money box" }
+  0x95: { name: "updatemoneybox", args: "bb", desc: "Update money box display" }
+  0x96: { name: "getpricereduction", args: "v", desc: "Get price reduction value" }
+
+  # Screen effects
+  0x97: { name: "fadescreen", args: "b", desc: "Fade screen in/out" }
+  0x98: { name: "fadescreenspeed", args: "bb", desc: "Fade screen with speed" }
+  0x99: { name: "setflashradius", args: "w", desc: "Set Flash radius" }
+  0x9A: { name: "animateflash", args: "b", desc: "Animate Flash" }
+  0x9B: { name: "messageautoscroll", args: "d", desc: "Auto-scrolling message" }
+
+  # Field effects
+  0x9C: { name: "dofieldeffect", args: "w", desc: "Do field effect" }
+  0x9D: { name: "setfieldeffectargument", args: "bw", desc: "Set field effect argument" }
+  0x9E: { name: "waitfieldeffect", args: "w", desc: "Wait for field effect" }
+  0x9F: { name: "setrespawn", args: "w", desc: "Set respawn point" }
+  0xA0: { name: "checkplayergender", args: "", desc: "Check player gender -> LASTRESULT" }
+  0xA1: { name: "playmoncry", args: "pw", desc: "Play Pokemon cry" }
+  0xA2: { name: "setmetatile", args: "wwwb", desc: "Set metatile on map" }
+
+  # Weather
+  0xA3: { name: "resetweather", args: "", desc: "Reset weather to map default" }
+  0xA4: { name: "setweather", args: "w", desc: "Set weather type" }
+  0xA5: { name: "doweather", args: "", desc: "Execute weather change" }
+  0xA6: { name: "setstepcallback", args: "b", desc: "Set step callback function" }
+  0xA7: { name: "setmaplayoutindex", args: "w", desc: "Change map layout" }
+
+  # Object priority
+  0xA8: { name: "setobjectpriority", args: "vwb", desc: "Set object priority/layer" }
+  0xA9: { name: "resetobjectpriority", args: "vw", desc: "Reset object priority" }
+  0xAA: { name: "createvobject", args: "bbbvv", desc: "Create virtual object sprite" }
+  0xAB: { name: "turnvobject", args: "bb", desc: "Turn virtual object" }
+
+  # Door animations
+  0xAC: { name: "opendoor", args: "ww", desc: "Open door at coords" }
+  0xAD: { name: "closedoor", args: "ww", desc: "Close door at coords" }
+  0xAE: { name: "waitdooranim", args: "", desc: "Wait for door animation" }
+  0xAF: { name: "setdooropen", args: "ww", desc: "Set door as open" }
+  0xB0: { name: "setdoorclosed", args: "ww", desc: "Set door as closed" }
+
+  # Elevator
+  0xB1: { name: "addelevmenuitem", args: "bwwww", desc: "Add elevator menu item" }
+  0xB2: { name: "showelevmenu", args: "", desc: "Show elevator menu" }
+
+  # Coins
+  0xB3: { name: "checkcoins", args: "v", desc: "Check coins -> variable" }
+  0xB4: { name: "givecoins", args: "w", desc: "Give coins" }
+  0xB5: { name: "takecoins", args: "w", desc: "Take coins" }
+
+  # Wild battle
+  0xB6: { name: "setwildbattle", args: "pwi", desc: "Set wild battle (species,level,item)" }
+  0xB7: { name: "dowildbattle", args: "", desc: "Start wild battle" }
+
+  # Virtual address commands (RAM scripts)
+  0xB8: { name: "setvaddress", args: "d", desc: "Set virtual address base (for RAM scripts)" }
+  0xB9: { name: "vgoto", args: "d", desc: "Virtual goto (relative to vaddress)" }
+  0xBA: { name: "vcall", args: "d", desc: "Virtual call (relative to vaddress)" }
+  0xBB: { name: "vgoto_if", args: "bd", desc: "Virtual conditional goto" }
+  0xBC: { name: "vcall_if", args: "bd", desc: "Virtual conditional call" }
+  0xBD: { name: "vmessage", args: "d", desc: "Message using virtual address" }
+  0xBE: { name: "vbuffermessage", args: "bd", desc: "Buffer message from virtual address" }
+  0xBF: { name: "vbufferstring", args: "bd", desc: "Buffer string from virtual address" }
+
+  # Coins UI
+  0xC0: { name: "showcoinsbox", args: "bb", desc: "Show coins box at x,y" }
+  0xC1: { name: "hidecoinsbox", args: "bb", desc: "Hide coins box" }
+  0xC2: { name: "updatecoinsbox", args: "bb", desc: "Update coins display" }
+
+  # Game stat
+  0xC3: { name: "incrementgamestat", args: "b", desc: "Increment game stat counter" }
+  0xC4: { name: "setescapewarp", args: "wbbbb", desc: "Set escape rope warp destination" }
+  0xC5: { name: "waitmoncry", args: "", desc: "Wait for Pokemon cry to finish" }
+  0xC6: { name: "bufferboxname", args: "bv", desc: "Buffer PC box name" }
+  0xC7: { name: "textcolor", args: "b", desc: "Set text color" }
+
+  # FRLG specific
+  0xC8: { name: "loadhelp", args: "d", desc: "Load help context message" }
+  0xC9: { name: "unloadhelp", args: "", desc: "Unload help context" }
+  0xCA: { name: "signmsg", args: "", desc: "Sign message mode on" }
+  0xCB: { name: "normalmsg", args: "", desc: "Normal message mode" }
+  0xCC: { name: "comparehiddenvar", args: "bw", desc: "Compare hidden variable" }
+  0xCD: { name: "setmonobedient", args: "b", desc: "Set Pokemon as obedient" }
+  0xCE: { name: "checkmonobedience", args: "b", desc: "Check Pokemon obedience" }
+  0xCF: { name: "execram", args: "", desc: "Execute RAM script" }
+  0xD0: { name: "setworldmapflag", args: "f", desc: "Set world map flag" }
+  0xD1: { name: "warpsootopolis", args: "wb", desc: "Special Sootopolis warp" }
+  0xD2: { name: "setmonmetlocation", args: "bp", desc: "Set Pokemon met location" }
+
+  # Emerald gym puzzles
+  0xD3: { name: "mossdeepgym1", args: "w", desc: "Mossdeep gym puzzle cmd" }
+  0xD4: { name: "mossdeepgym2", args: "", desc: "Mossdeep gym puzzle cmd" }
+  0xD5: { name: "mossdeepgym3", args: "w", desc: "Mossdeep gym puzzle cmd" }
+  0xD6: { name: "mossdeepgym4", args: "", desc: "Mossdeep gym puzzle cmd" }
+  0xD7: { name: "warp7", args: "wbbbb", desc: "Another warp variant" }
+  0xD8: { name: "cmdD8", args: "", desc: "Unknown command D8" }
+  0xD9: { name: "cmdD9", args: "", desc: "Unknown command D9" }
+  0xDA: { name: "hidebox2", args: "", desc: "Hide box variant" }
+  0xDB: { name: "message3", args: "d", desc: "Message variant" }
+  0xDC: { name: "fadescreenswapbuffers", args: "b", desc: "Fade screen swap buffers" }
+  0xDD: { name: "buffertrainerclassname", args: "bv", desc: "Buffer trainer class name" }
+  0xDE: { name: "buffertrainername", args: "bv", desc: "Buffer trainer name" }
+  0xDF: { name: "pokenavcall", args: "d", desc: "PokeNav call message" }
+  0xE0: { name: "warp8", args: "wbbbb", desc: "Warp variant 8" }
+  0xE1: { name: "buffercontestname", args: "bv", desc: "Buffer contest type name" }
+  0xE2: { name: "bufferitemnameplural", args: "biv", desc: "Buffer item name (plural)" }

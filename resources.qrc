@@ -1,0 +1,11 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <qresource prefix="/">
+        <file>Resources/gen3_rom_data.yaml</file>
+        <file>Resources/font_normal_copy_2_latin.json</file>
+        <file>Resources/font_short_copy_1_latin.json</file>
+        <file>Resources/script_commands.yaml</file>
+        <file>Resources/script_data.yaml</file>
+        <file>Resources/tab.bin</file>
+    </qresource>
+</RCC>

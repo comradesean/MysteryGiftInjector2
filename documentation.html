@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Mystery Gift Injector - Documentation</title>
+</head>
+<body style="font-family: Segoe UI, Arial, sans-serif; font-size: 10pt; line-height: 1.5; margin: 15px; color: #333;">
+
+<h1 style="color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 8px;">Mystery Gift Injector</h1>
+<p>A tool for managing Mystery Gift Wonder Cards in Pokemon Generation III save files.</p>
+
+<h2 style="color: #2980b9; margin-top: 25px;">Contents</h2>
+<ul>
+    <li><a href="#supported-games">Supported Games</a></li>
+    <li><a href="#getting-started">Getting Started</a></li>
+    <li><a href="#wonder-card-display">Wonder Card Display</a></li>
+    <li><a href="#injecting">Injecting Wonder Cards</a></li>
+    <li><a href="#editing">Editing Wonder Cards</a></li>
+    <li><a href="#saving">Saving Changes</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#green-man">GREEN MAN Script</a></li>
+    <li><a href="#file-formats">File Formats</a></li>
+    <li><a href="#shortcuts">Keyboard Shortcuts</a></li>
+    <li><a href="#troubleshooting">Troubleshooting</a></li>
+    <li><a href="#technical">Technical Details</a></li>
+</ul>
+
+<h2 style="color: #2980b9; margin-top: 25px;"><a name="supported-games"></a>Supported Games</h2>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+    <tr style="background-color: #3498db; color: white;">
+        <th>Game</th>
+        <th>Region</th>
+        <th>Versions</th>
+    </tr>
+    <tr>
+        <td>Pokemon FireRed</td>
+        <td>USA/International</td>
+        <td>1.0, 1.1</td>
+    </tr>
+    <tr style="background-color: #ecf0f1;">
+        <td>Pokemon LeafGreen</td>
+        <td>USA/International</td>
+        <td>1.0, 1.1</td>
+    </tr>
+    <tr>
+        <td>Pokemon Emerald</td>
+        <td>USA/International</td>
+        <td>All versions</td>
+    </tr>
+</table>
+
+<p style="background-color: #e8f4fd; border-left: 4px solid #3498db; padding: 10px; margin: 15px 0;">
+<b>Note:</b> Japanese versions are not currently supported due to differences in Wonder Card text encoding and structure.
+</p>
+
+<h2 style="color: #2980b9; margin-top: 25px;"><a name="getting-started"></a>Getting Started</h2>
+
+<h3 style="color: #27ae60;">Opening a Save File</h3>
+<ol>
+    <li>Click <b>File &rarr; Open</b> or press <code style="background-color: #ecf0f1; padding: 2px 5px;">Ctrl+O</code></li>
+    <li>Select a <code>.sav</code> file (128 KB)</li>
+    <li>The application will automatically detect the game type and validate checksums</li>
+</ol>
+
+<h3 style="color: #27ae60;">Loading a ROM (Optional)</h3>
+<p>Loading a matching ROM enables authentic Wonder Card graphics:</p>
+<ol>
+    <li>Click <b>Tools &rarr; Load ROM</b></li>
+    <li>Select the GBA ROM file matching your save (FireRed, LeafGreen, or Emerald)</li>
+    <li>The ROM is identified by MD5 checksum for accuracy</li>
+</ol>
+
+<p style="background-color: #e8fdf0; border-left: 4px solid #27ae60; padding: 10px; margin: 15px 0;">
+<b>Tip:</b> Without a ROM loaded, the application uses fallback graphics. The Wonder Card will still function correctly, but visuals may differ from the authentic appearance.
+</p>
+
+<h2 style="color: #2980b9; margin-top: 25px;"><a name="wonder-card-display"></a>Wonder Card Display</h2>
+
+<h3 style="color: #27ae60;">View Modes</h3>
+<p>Toggle between two display modes using the segmented control or View menu:</p>
+<ul>
+    <li><b>Text View:</b> Visual Wonder Card display with editable fields</li>
+    <li><b>Hex View:</b> Raw hexadecimal data for advanced inspection</li>
+</ul>
+
+<h3 style="color: #27ae60;">Tabs</h3>
+<ul>
+    <li><b>Wonder Card:</b> The visual card data shown to players in-game</li>
+    <li><b>GREEN MAN:</b> The script data (GMScript/RamScript) that executes when the gift is received</li>
+</ul>
+
+<h2 style="color: #2980b9; margin-top: 25px;"><a name="injecting"></a>Injecting Wonder Cards</h2>
+
+<h3 style="color: #27ae60;">Using Preset Tickets</h3>
+<p>The easiest way to inject a Wonder Card is using the preset dropdown:</p>
+<ol>
+    <li>Open a save file</li>
+    <li>Select a preset from the <b>Preset</b> dropdown (e.g., "Aurora Ticket - Emerald")</li>
+    <li>The Wonder Card and script will be loaded automatically</li>
+    <li>Click <b>Save</b> to write changes to the save file</li>
+</ol>
+
+<h3 style="color: #27ae60;">Available Preset Tickets</h3>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+    <tr style="background-color: #3498db; color: white;">
+        <th>Ticket</th>
+        <th>Games</th>
+        <th>Destination</th>
+    </tr>
+    <tr>
+        <td>Aurora Ticket</td>
+        <td>FR/LG, Emerald</td>
+        <td>Birth Island (Deoxys)</td>
+    </tr>
+    <tr style="background-color: #ecf0f1;">
+        <td>Mystic Ticket</td>
+        <td>FR/LG</td>
+        <td>Navel Rock (Ho-Oh &amp; Lugia)</td>
+    </tr>
+</table>
+
+<h3 style="color: #27ae60;">Importing Custom Wonder Cards</h3>
+<ol>
+    <li>Click <b>Edit &rarr; Import Wonder Card</b></li>
+    <li>Select a <code>.bin</code> file containing Wonder Card data (336 bytes)</li>
+    <li>The script file will be loaded automatically if it shares the same naming pattern</li>
+</ol>
+
+<h3 style="color: #27ae60;">Exporting Wonder Cards</h3>
+<ol>
+    <li>With a Wonder Card loaded, click <b>Edit &rarr; Export Wonder Card</b></li>
+    <li>Choose a location to save the <code>.bin</code> file</li>
+</ol>
+
+<h2 style="color: #2980b9; margin-top: 25px;"><a name="editing"></a>Editing Wonder Cards</h2>
+
+<h3 style="color: #27ae60;">Enabling Edit Mode</h3>
+<ol>
+    <li>Click <b>Edit &rarr; Enable Editing</b> or click the <b>Edit</b> button</li>
+    <li>The Wonder Card display becomes interactive</li>
+</ol>
+
+<h3 style="color: #27ae60;">Text Fields</h3>
+<p>Click on any text field to edit it. The Wonder Card has these editable fields:</p>
+<ul>
+    <li><b>Title:</b> Main card title (40 bytes max)</li>
+    <li><b>Subtitle:</b> Secondary title line (40 bytes max)</li>
+    <li><b>Content Lines 1-4:</b> Main description text (40 bytes each)</li>
+    <li><b>Warning Lines 1-2:</b> Footer warning text (40 bytes each)</li>
+</ul>
+
+<p style="background-color: #fdf2e8; border-left: 4px solid #e67e22; padding: 10px; margin: 15px 0;">
+<b>Important:</b> Text is encoded in Gen3 format where some characters use multiple bytes. The status bar shows current byte usage vs. maximum allowed.
+</p>
+
+<h3 style="color: #27ae60;">Visual Options</h3>
+<ul>
+    <li><b>Background:</b> Select from available Wonder Card background designs</li>
+    <li><b>Icon Species:</b> Pokemon species number for the card icon (0-386)</li>
+    <li><b>Icon Disabled:</b> Hide the Pokemon icon</li>
+    <li><b>Type:</b> Card type (Event, Stamp, or Counter)</li>
+</ul>
+
+<h3 style="color: #27ae60;">Gift Item</h3>
+<p>For item-based Wonder Cards, use the <b>Gift</b> dropdown to select which item the player receives. This modifies the embedded script.</p>
+
+<h2 style="color: #2980b9; margin-top: 25px;"><a name="saving"></a>Saving Changes</h2>
+
+<h3 style="color: #27ae60;">Save Options</h3>
+<ul>
+    <li><b>File &rarr; Save</b> (<code style="background-color: #ecf0f1; padding: 2px 5px;">Ctrl+S</code>): Overwrite the original file</li>
+    <li><b>File &rarr; Save As</b>: Save to a new location</li>
+</ul>
+
+<h3 style="color: #27ae60;">Backup Option</h3>
+<p>Enable the <b>Backup .sav</b> checkbox to create a backup before saving. The backup is saved as <code>filename.sav.bak</code>.</p>
+
+<p style="background-color: #e8fdf0; border-left: 4px solid #27ae60; padding: 10px; margin: 15px 0;">
+<b>Tip:</b> Always keep backups of your save files before making modifications.
+</p>
+
+<h2 style="color: #2980b9; margin-top: 25px;"><a name="tools"></a>Tools</h2>
+
+<h3 style="color: #27ae60;">Enable Mystery Gift Flag</h3>
+<p>If Mystery Gift is not yet unlocked in your save file:</p>
+<ol>
+    <li>Click <b>Tools &rarr; Enable Mystery Gift Flag</b></li>
+    <li>This sets the in-game flag that enables the Mystery Gift menu option</li>
+</ol>
+
+<p style="background-color: #e8f4fd; border-left: 4px solid #3498db; padding: 10px; margin: 15px 0;">
+<b>Note:</b> Normally, players unlock Mystery Gift by entering a phrase at a Poke Mart. This tool skips that requirement.
+</p>
+
+<h3 style="color: #27ae60;">Validate Checksums</h3>
+<p>Click <b>Tools &rarr; Validate Checksums</b> to verify save file integrity. The application automatically validates checksums when loading and updates them when saving.</p>
+
+<h3 style="color: #27ae60;">ROM Tile Viewer</h3>
+<p>A debugging tool for viewing raw tile graphics from a loaded ROM.</p>
+
+<h2 style="color: #2980b9; margin-top: 25px;"><a name="green-man"></a>GREEN MAN Script</h2>
+
+<p>The GREEN MAN tab displays the RamScript/GMScript data. This script executes when the player receives the Mystery Gift and controls:</p>
+<ul>
+    <li>What item/Pokemon the player receives</li>
+    <li>Dialog text shown to the player</li>
+    <li>Special events or flag changes</li>
+</ul>
+
+<h3 style="color: #27ae60;">Script Structure</h3>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+    <tr style="background-color: #3498db; color: white;">
+        <th>Field</th>
+        <th>Size</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>Magic</td>
+        <td>1 byte</td>
+        <td>Must be 51 (0x33) for valid script</td>
+    </tr>
+    <tr style="background-color: #ecf0f1;">
+        <td>Map Group</td>
+        <td>1 byte</td>
+        <td>Map group for trigger (0xFF = any)</td>
+    </tr>
+    <tr>
+        <td>Map Number</td>
+        <td>1 byte</td>
+        <td>Map number for trigger (0xFF = any)</td>
+    </tr>
+    <tr style="background-color: #ecf0f1;">
+        <td>Object ID</td>
+        <td>1 byte</td>
+        <td>NPC object ID (0xFF = none)</td>
+    </tr>
+    <tr>
+        <td>Script</td>
+        <td>996 bytes</td>
+        <td>Compiled script bytecode</td>
+    </tr>
+</table>
+
+<h2 style="color: #2980b9; margin-top: 25px;"><a name="file-formats"></a>File Formats</h2>
+
+<h3 style="color: #27ae60;">Wonder Card Binary (.bin)</h3>
+<ul>
+    <li><b>Size:</b> 336 bytes</li>
+    <li><b>Header:</b> 4 bytes (CRC16 + padding)</li>
+    <li><b>Payload:</b> 332 bytes (Wonder Card structure)</li>
+</ul>
+
+<h3 style="color: #27ae60;">Script Binary (.bin)</h3>
+<ul>
+    <li><b>Size:</b> 1004 bytes</li>
+    <li><b>Header:</b> 4 bytes (CRC16 + padding)</li>
+    <li><b>Payload:</b> 1000 bytes (RamScript structure)</li>
+</ul>
+
+<h3 style="color: #27ae60;">Save File (.sav)</h3>
+<ul>
+    <li><b>Size:</b> 128 KB (131072 bytes)</li>
+    <li><b>Structure:</b> 14 sections per save slot, 2 save slots</li>
+    <li><b>Wonder Card Location:</b> Section 4</li>
+</ul>
+
+<h2 style="color: #2980b9; margin-top: 25px;"><a name="shortcuts"></a>Keyboard Shortcuts</h2>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+    <tr style="background-color: #3498db; color: white;">
+        <th>Shortcut</th>
+        <th>Action</th>
+    </tr>
+    <tr>
+        <td><code style="background-color: #34495e; color: white; padding: 2px 6px;">Ctrl+O</code></td>
+        <td>Open save file</td>
+    </tr>
+    <tr style="background-color: #ecf0f1;">
+        <td><code style="background-color: #34495e; color: white; padding: 2px 6px;">Ctrl+S</code></td>
+        <td>Save</td>
+    </tr>
+    <tr>
+        <td><code style="background-color: #34495e; color: white; padding: 2px 6px;">Ctrl+Shift+S</code></td>
+        <td>Save As</td>
+    </tr>
+    <tr style="background-color: #ecf0f1;">
+        <td><code style="background-color: #34495e; color: white; padding: 2px 6px;">Ctrl+W</code></td>
+        <td>Close file</td>
+    </tr>
+    <tr>
+        <td><code style="background-color: #34495e; color: white; padding: 2px 6px;">Ctrl+I</code></td>
+        <td>Import Wonder Card</td>
+    </tr>
+    <tr style="background-color: #ecf0f1;">
+        <td><code style="background-color: #34495e; color: white; padding: 2px 6px;">Ctrl+E</code></td>
+        <td>Export Wonder Card</td>
+    </tr>
+    <tr>
+        <td><code style="background-color: #34495e; color: white; padding: 2px 6px;">Ctrl+1</code></td>
+        <td>Switch to Wonder Card tab</td>
+    </tr>
+    <tr style="background-color: #ecf0f1;">
+        <td><code style="background-color: #34495e; color: white; padding: 2px 6px;">Ctrl+2</code></td>
+        <td>Switch to GREEN MAN tab</td>
+    </tr>
+</table>
+
+<h2 style="color: #2980b9; margin-top: 25px;"><a name="troubleshooting"></a>Troubleshooting</h2>
+
+<h3 style="color: #27ae60;">Checksum Invalid</h3>
+<p>If the status bar shows "Checksum: Invalid", the save file may be corrupted or from an unsupported game version. The application will still attempt to load data but modifications may not work correctly.</p>
+
+<h3 style="color: #27ae60;">No Wonder Card Displayed</h3>
+<p>If "No Wonder Card loaded" appears, the save file does not contain an active Wonder Card. Use the preset dropdown or import a Wonder Card to inject one.</p>
+
+<h3 style="color: #27ae60;">ROM Not Recognized</h3>
+<p>The ROM must be an unmodified USA version of FireRed, LeafGreen, or Emerald. Modified ROMs or other regions may not be recognized.</p>
+
+<h3 style="color: #27ae60;">Text Truncated</h3>
+<p>Gen3 text encoding uses variable byte lengths. If text appears truncated, you've exceeded the byte limit. Use shorter text or different characters.</p>
+
+<h2 style="color: #2980b9; margin-top: 25px;"><a name="technical"></a>Technical Details</h2>
+
+<h3 style="color: #27ae60;">Save File Structure</h3>
+<p>Gen3 save files use a sectored format with checksums for data integrity:</p>
+<ul>
+    <li>Each section is 4096 bytes (0x1000)</li>
+    <li>Sections 0-13 contain game data</li>
+    <li>Section 4 contains Mystery Gift data</li>
+    <li>Two complete save slots exist for redundancy</li>
+    <li>The active slot has the higher save index counter</li>
+</ul>
+
+<h3 style="color: #27ae60;">CRC16 Algorithm</h3>
+<p>Wonder Card and Script data use CCITT CRC-16:</p>
+<ul>
+    <li>Polynomial: 0x1021</li>
+    <li>Seed: 0x1121</li>
+    <li>Lookup table stored in <code>tab.bin</code></li>
+</ul>
+
+<h2 style="color: #2980b9; margin-top: 25px;"><a name="credits"></a>Credits</h2>
+<p>This application uses data and research from the Pokemon reverse engineering community, including the pokeemerald/pokefirered decompilation projects.</p>
+
+</body>
+</html>

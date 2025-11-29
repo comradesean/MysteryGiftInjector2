@@ -1,0 +1,584 @@
+# Pokemon Generation 3 - ROM Data Reference
+# All offsets are ROM file offsets (not GBA addresses)
+# For glyphs/glyph_widths: apply version offset_delta to base offsets
+# For palettes: use explicit offsets per version (different delta pattern)
+# All palettes are 0x20 bytes (16 colors, BGR555)
+# dimensions = tile-aligned cell size for extraction [width, height]
+# char_size = actual character content area for rendering [width, height]
+# source_tile_columns = number of 8x8 tile columns in ROM data layout
+
+games:
+  FRLG:
+    bpp: 2
+    pokemon_count: 440  # National Dex + forms (0-439)
+    versions:
+      FireRed_1.0:
+        code: BPRE
+        offset_delta: 0x00
+        md5: e26ee0d44e809351c8ce2d73c7400cdd
+        # Name tables for script disassembly
+        name_tables:
+          items:
+            offset: 0x3DB028
+            entry_size: 44      # Full item entry size
+            name_length: 14     # Max chars for name (at offset 0 of entry)
+            count: 375
+          pokemon:
+            offset: 0x245EE0
+            entry_size: 11
+            count: 412
+          moves:
+            offset: 0x247094
+            entry_size: 13
+            count: 355
+        palettes:
+          stdpal: [0x471DEC, 0x471E0C, 0x471E2C, 0x471E4C, 0x471E6C]
+          wondercard: [0x46708C, 0x4670AC, 0x4670CC, 0x4670EC, 0x46710C, 0x46712C, 0x46714C, 0x46716C]
+          stamp_shadow: [0x467DF4, 0x467E14, 0x467E34, 0x467E54, 0x467E74, 0x467E94, 0x467EB4, 0x467ED4]
+        pokemon_sprites:
+          # Front/back tables: 8-byte entries (4-byte pointer + 4-byte size)
+          # Palette tables: 8-byte entries (4-byte pointer + 4-byte tag)
+          # Icon table: 4-byte entries (pointer only, uncompressed)
+          front_sprites: 0x2350AC
+          back_sprites: 0x23654C
+          front_palettes: 0x23730C
+          back_palettes: 0x23730C    # Same as front
+          shiny_palettes: 0x2380CC
+          icon_sprites: 0x3D37A0
+          icon_palettes: 0x3D3740    # 3 palettes, 32 bytes each
+          icon_palette_indices: 0x3D3E80  # 1 byte per Pokemon
+        wondercard_table: 0x467FBC   # 16 bytes per entry (tileset, tilemap, palette ptrs + padding)
+        wondercard_count: 8
+      FireRed_1.1:
+        code: BPRE_Rev1
+        offset_delta: 0x70
+        md5: 51901a6e40661b3914aa333c802e24e8
+        name_tables:
+          items:
+            offset: 0x3DB098    # 0x3DB028 + 0x70
+            entry_size: 44
+            name_length: 14
+            count: 375
+          pokemon:
+            offset: 0x245F50    # 0x245EE0 + 0x70
+            entry_size: 11
+            count: 412
+          moves:
+            offset: 0x247104    # 0x247094 + 0x70
+            entry_size: 13
+            count: 355
+        palettes:
+          stdpal: [0x471E4C, 0x471E6C, 0x471E8C, 0x471EAC, 0x471ECC]
+          wondercard: [0x4670EC, 0x46710C, 0x46712C, 0x46714C, 0x46716C, 0x46718C, 0x4671AC, 0x4671CC]
+          stamp_shadow: [0x467E54, 0x467E74, 0x467E94, 0x467EB4, 0x467ED4, 0x467EF4, 0x467F14, 0x467F34]
+        pokemon_sprites:
+          front_sprites: 0x23511C
+          back_sprites: 0x2365BC
+          front_palettes: 0x23737C
+          back_palettes: 0x23737C
+          shiny_palettes: 0x23813C
+          icon_sprites: 0x3D3810
+          icon_palettes: 0x3D37B0
+          icon_palette_indices: 0x3D3EF0
+        wondercard_table: 0x46801C
+        wondercard_count: 8
+      LeafGreen_1.0:
+        code: BPGE
+        offset_delta: -0x24
+        md5: 612ca9473451fa42b51d1711031ed5f6
+        name_tables:
+          items:
+            offset: 0x3DAE64
+            entry_size: 44
+            name_length: 14
+            count: 375
+          pokemon:
+            offset: 0x245EBC
+            entry_size: 11
+            count: 412
+          moves:
+            offset: 0x247070
+            entry_size: 13
+            count: 355
+        palettes:
+          stdpal: [0x4716C8, 0x4716E8, 0x471708, 0x471728, 0x471748]
+          wondercard: [0x466968, 0x466988, 0x4669A8, 0x4669C8, 0x4669E8, 0x466A08, 0x466A28, 0x466A48]
+          stamp_shadow: [0x4676D0, 0x4676F0, 0x467710, 0x467730, 0x467750, 0x467770, 0x467790, 0x4677B0]
+        pokemon_sprites:
+          front_sprites: 0x235088
+          back_sprites: 0x236528
+          front_palettes: 0x2372E8
+          back_palettes: 0x2372E8
+          shiny_palettes: 0x2380A8
+          icon_sprites: 0x3D35DC
+          icon_palettes: 0x3D357C
+          icon_palette_indices: 0x3D3CBC
+        wondercard_table: 0x467898
+        wondercard_count: 8
+      LeafGreen_1.1:
+        code: BPGE_Rev1
+        offset_delta: 0x4C
+        md5: 9d33a02159e018d09073e700e1fd10fd
+        name_tables:
+          items:
+            offset: 0x3DAED4
+            entry_size: 44
+            name_length: 14
+            count: 375
+          pokemon:
+            offset: 0x245F2C
+            entry_size: 11
+            count: 412
+          moves:
+            offset: 0x2470E0
+            entry_size: 13
+            count: 355
+        palettes:
+          stdpal: [0x471738, 0x471758, 0x471778, 0x471798, 0x4717B8]
+          wondercard: [0x4669D8, 0x4669F8, 0x466A18, 0x466A38, 0x466A58, 0x466A78, 0x466A98, 0x466AB8]
+          stamp_shadow: [0x467740, 0x467760, 0x467780, 0x4677A0, 0x4677C0, 0x4677E0, 0x467800, 0x467820]
+        pokemon_sprites:
+          front_sprites: 0x2350F8
+          back_sprites: 0x236598
+          front_palettes: 0x237358
+          back_palettes: 0x237358
+          shiny_palettes: 0x238118
+          icon_sprites: 0x3D364C
+          icon_palettes: 0x3D35EC
+          icon_palette_indices: 0x3D3D2C
+        wondercard_table: 0x467908
+        wondercard_count: 8
+
+    # Base offsets are for FireRed 1.0
+    glyphs:
+      0:
+        name: FONT_SMALL
+        latin:
+          symbol: sFontSmallLatinGlyphs
+          offset: 0x1EAF00
+          size: 0x4000
+          dimensions: [8, 16]
+          char_size: [5, 16]
+          source_tile_columns: 1
+          width: sFontSmallLatinGlyphWidths
+        japanese:
+          symbol: sFontSmallJapaneseGlyphs
+          offset: 0x1EF100
+          size: 0x4000
+          dimensions: [8, 16]
+          char_size: [8, 16]
+          source_tile_columns: 16
+          fixed_width: 8
+
+      1:
+        name: FONT_NORMAL_COPY_1
+        latin:
+          symbol: sFontNormalCopy1LatinGlyphs
+          offset: 0x1F3100
+          size: 0x8000
+          dimensions: [8, 16]
+          char_size: [6, 9]
+          source_tile_columns: 2
+          width: sFontNormalCopy1LatinGlyphWidths
+        japanese:
+          symbol: sFontTallJapaneseGlyphs
+          offset: 0x1FB300
+          size: 0x4000
+          dimensions: [8, 16]
+          char_size: [8, 11]
+          source_tile_columns: 16
+          fixed_width: 8
+
+      2:
+        name: FONT_NORMAL
+        latin:
+          symbol: sFontNormalLatinGlyphs
+          offset: 0x1FF300
+          size: 0x8000
+          dimensions: [8, 16]
+          char_size: [6, 9]
+          source_tile_columns: 2
+          width: sFontNormalLatinGlyphWidths
+        japanese:
+          symbol: sFontNormalJapaneseGlyphs
+          offset: 0x207500
+          size: 0x8000
+          dimensions: [16, 16]
+          char_size: [10, 10]
+          source_tile_columns: 16
+          width: sFontNormalJapaneseGlyphWidths
+
+      3:
+        name: FONT_NORMAL_COPY_2
+        # Shares glyph data with FONT_NORMAL (index 2)
+        latin:
+          symbol: sFontNormalLatinGlyphs
+          offset: 0x1FF300
+          size: 0x8000
+          dimensions: [8, 16]
+          char_size: [6, 9]
+          source_tile_columns: 2
+          width: sFontNormalLatinGlyphWidths
+        japanese:
+          # Same glyphs as FONT_NORMAL but fixed width instead of table
+          symbol: sFontNormalJapaneseGlyphs
+          offset: 0x207500
+          size: 0x8000
+          dimensions: [16, 16]
+          char_size: [10, 10]
+          source_tile_columns: 16
+          fixed_width: 10
+
+      4:
+        name: FONT_MALE
+        latin:
+          symbol: sFontMaleLatinGlyphs
+          offset: 0x20F618
+          size: 0x8000
+          dimensions: [8, 16]
+          char_size: [6, 9]
+          source_tile_columns: 2
+          width: sFontMaleLatinGlyphWidths
+        japanese:
+          symbol: sFontMaleJapaneseGlyphs
+          offset: 0x217818
+          size: 0x8000
+          dimensions: [16, 16]
+          char_size: [10, 10]
+          source_tile_columns: 16
+          width: sFontMaleJapaneseGlyphWidths
+
+      5:
+        name: FONT_FEMALE
+        latin:
+          symbol: sFontFemaleLatinGlyphs
+          offset: 0x21F930
+          size: 0x8000
+          dimensions: [8, 16]
+          char_size: [6, 9]
+          source_tile_columns: 2
+          width: sFontFemaleLatinGlyphWidths
+        japanese:
+          symbol: sFontFemaleJapaneseGlyphs
+          offset: 0x227B30
+          size: 0x8000
+          dimensions: [16, 16]
+          char_size: [10, 10]
+          source_tile_columns: 16
+          width: sFontFemaleJapaneseGlyphWidths
+
+      6:
+        name: FONT_BRAILLE
+        latin:
+          symbol: sBrailleGlyphs
+          offset: 0x46FB0C
+          size: 0x1000
+          dimensions: [16, 16]
+          char_size: [16, 16]
+          source_tile_columns: 2
+          fixed_width: 16
+        japanese:
+          symbol: sBrailleGlyphs
+          offset: 0x46FB0C
+          size: 0x1000
+          dimensions: [16, 16]
+          char_size: [16, 16]
+          source_tile_columns: 2
+          fixed_width: 16
+
+      7:
+        name: FONT_BOLD
+        latin: null
+        japanese:
+          symbol: sFontBoldJapaneseGlyphs
+          offset: 0x22FC48
+          size: 0x2000
+          dimensions: [8, 8]
+          char_size: [8, 8]
+          source_tile_columns: 16
+          fixed_width: 8
+
+    glyph_widths:
+      sFontSmallLatinGlyphWidths:
+        offset: 0x1EEF00
+        size: 0x200
+
+      sFontNormalCopy1LatinGlyphWidths:
+        offset: 0x1FB100
+        size: 0x200
+
+      sFontNormalLatinGlyphWidths:
+        offset: 0x207300
+        size: 0x200
+
+      sFontNormalJapaneseGlyphWidths:
+        offset: 0x20F500
+        size: 0x118
+
+      sFontMaleLatinGlyphWidths:
+        offset: 0x217618
+        size: 0x200
+
+      sFontMaleJapaneseGlyphWidths:
+        offset: 0x21F818
+        size: 0x118
+
+      sFontFemaleLatinGlyphWidths:
+        offset: 0x227930
+        size: 0x200
+
+      sFontFemaleJapaneseGlyphWidths:
+        offset: 0x22FB30
+        size: 0x118
+
+  Emerald:
+    bpp: 2
+    pokemon_count: 440  # National Dex + forms (0-439)
+    versions:
+      Emerald_1.0:
+        code: BPEE
+        offset_delta: 0x00
+        md5: 605b89b67018abcea91e693a4dd25be3
+        name_tables:
+          items:
+            offset: 0x5839A0
+            entry_size: 44
+            name_length: 14
+            count: 377
+          pokemon:
+            offset: 0x3185C8
+            entry_size: 11
+            count: 412
+          moves:
+            offset: 0x31977C
+            entry_size: 13
+            count: 355
+        palettes:
+          stdpal: [0x51017C, 0x51019C, 0x5101BC, 0x5101DC, 0x5101FC]
+          wondercard: [0x2F0E34, 0x2F0E54, 0x2F0E74, 0x2F0E94, 0x2F0EB4, 0x2F0ED4, 0x2F0EF4, 0x2F0F14]
+          stamp_shadow: [0x2F1B9C, 0x2F1BBC, 0x2F1BDC, 0x2F1BFC, 0x2F1C1C, 0x2F1C3C, 0x2F1C5C, 0x2F1C7C]
+        pokemon_sprites:
+          front_sprites: 0x301418
+          back_sprites: 0x3028B8
+          front_palettes: 0x303678
+          back_palettes: 0x303678
+          shiny_palettes: 0x304438
+          icon_sprites: 0x57BCA8
+          icon_palettes: 0xDDE1F8
+          icon_palette_indices: 0x57C388
+        wondercard_table: 0x2F1D64
+        wondercard_count: 8
+
+    glyphs:
+      0:
+        name: FONT_SMALL
+        latin:
+          symbol: gFontSmallLatinGlyphs
+          offset: 0x633CE4
+          size: 0x8000
+          dimensions: [8, 16]
+          char_size: [8, 16]
+          source_tile_columns: 2
+          width: gFontSmallLatinGlyphWidths
+        japanese:
+          symbol: gFontSmallJapaneseGlyphs
+          offset: 0x6544E4
+          size: 0x4000
+          dimensions: [8, 16]
+          char_size: [8, 16]
+          source_tile_columns: 16
+          fixed_width: 8
+
+      1:
+        name: FONT_NORMAL
+        latin:
+          symbol: gFontNormalLatinGlyphs
+          offset: 0x64C2E4
+          size: 0x8000
+          dimensions: [8, 16]
+          char_size: [8, 16]
+          source_tile_columns: 2
+          width: gFontNormalLatinGlyphWidths
+        japanese:
+          symbol: gFontNormalJapaneseGlyphs
+          offset: 0x6584E4
+          size: 0x4000
+          dimensions: [8, 16]
+          char_size: [8, 16]
+          source_tile_columns: 16
+          fixed_width: 8
+
+      2:
+        name: FONT_SHORT
+        latin:
+          symbol: gFontShortLatinGlyphs
+          offset: 0x6440E4
+          size: 0x8000
+          dimensions: [8, 16]
+          char_size: [8, 16]
+          source_tile_columns: 2
+          width: gFontShortLatinGlyphWidths
+        japanese:
+          symbol: gFontShortJapaneseGlyphs
+          offset: 0x66C8E4
+          size: 0x8000
+          dimensions: [16, 16]
+          char_size: [10, 10]
+          source_tile_columns: 16
+          width: gFontShortJapaneseGlyphWidths
+
+      3:
+        name: FONT_SHORT_COPY_1
+        # Identical to FONT_SHORT (index 2)
+        latin:
+          symbol: gFontShortLatinGlyphs
+          offset: 0x6440E4
+          size: 0x8000
+          dimensions: [8, 16]
+          char_size: [8, 16]
+          source_tile_columns: 2
+          width: gFontShortLatinGlyphWidths
+        japanese:
+          symbol: gFontShortJapaneseGlyphs
+          offset: 0x66C8E4
+          size: 0x8000
+          dimensions: [16, 16]
+          char_size: [10, 10]
+          source_tile_columns: 16
+          width: gFontShortJapaneseGlyphWidths
+
+      4:
+        name: FONT_SHORT_COPY_2
+        # Identical to FONT_SHORT (index 2)
+        latin:
+          symbol: gFontShortLatinGlyphs
+          offset: 0x6440E4
+          size: 0x8000
+          dimensions: [8, 16]
+          char_size: [8, 16]
+          source_tile_columns: 2
+          width: gFontShortLatinGlyphWidths
+        japanese:
+          symbol: gFontShortJapaneseGlyphs
+          offset: 0x66C8E4
+          size: 0x8000
+          dimensions: [16, 16]
+          char_size: [10, 10]
+          source_tile_columns: 16
+          width: gFontShortJapaneseGlyphWidths
+
+      5:
+        name: FONT_SHORT_COPY_3
+        # Identical to FONT_SHORT (index 2)
+        latin:
+          symbol: gFontShortLatinGlyphs
+          offset: 0x6440E4
+          size: 0x8000
+          dimensions: [8, 16]
+          char_size: [8, 16]
+          source_tile_columns: 2
+          width: gFontShortLatinGlyphWidths
+        japanese:
+          symbol: gFontShortJapaneseGlyphs
+          offset: 0x66C8E4
+          size: 0x8000
+          dimensions: [16, 16]
+          char_size: [10, 10]
+          source_tile_columns: 16
+          width: gFontShortJapaneseGlyphWidths
+
+      6:
+        name: FONT_BRAILLE
+        latin:
+          symbol: sFont_Braille
+          offset: 0x616128
+          size: 0x1000
+          dimensions: [16, 16]
+          char_size: [16, 16]
+          source_tile_columns: 2
+          fixed_width: 16
+        japanese:
+          symbol: sFont_Braille
+          offset: 0x616128
+          size: 0x1000
+          dimensions: [16, 16]
+          char_size: [16, 16]
+          source_tile_columns: 2
+          fixed_width: 16
+
+      7:
+        name: FONT_NARROW
+        latin:
+          symbol: gFontNarrowLatinGlyphs
+          offset: 0x63BEE4
+          size: 0x8000
+          dimensions: [8, 16]
+          char_size: [8, 16]
+          source_tile_columns: 2
+          width: gFontNarrowLatinGlyphWidths
+        japanese:
+          # Uses same Japanese glyphs as FONT_NORMAL (index 1)
+          symbol: gFontNormalJapaneseGlyphs
+          offset: 0x6584E4
+          size: 0x4000
+          dimensions: [8, 16]
+          char_size: [8, 16]
+          source_tile_columns: 16
+          fixed_width: 8
+
+      8:
+        name: FONT_SMALL_NARROW
+        latin:
+          symbol: gFontSmallNarrowLatinGlyphs
+          offset: 0x62BAE4
+          size: 0x8000
+          dimensions: [8, 16]
+          char_size: [8, 16]
+          source_tile_columns: 1
+          width: gFontSmallNarrowLatinGlyphWidths
+        japanese:
+          # Uses same Japanese glyphs as FONT_SMALL (index 0)
+          symbol: gFontSmallJapaneseGlyphs
+          offset: 0x6544E4
+          size: 0x4000
+          dimensions: [8, 16]
+          char_size: [8, 16]
+          source_tile_columns: 16
+          fixed_width: 8
+
+      9:
+        name: FONT_BOLD
+        latin: null
+        japanese:
+          symbol: sFontBoldJapaneseGlyphs
+          offset: 0x2EA61C
+          size: 0x2000
+          dimensions: [8, 8]
+          char_size: [8, 8]
+          source_tile_columns: 16
+          fixed_width: 8
+
+    glyph_widths:
+      gFontSmallLatinGlyphWidths:
+        offset: 0x63BCE4
+        size: 0x200
+
+      gFontSmallNarrowLatinGlyphWidths:
+        offset: 0x633AE4
+        size: 0x200
+
+      gFontNormalLatinGlyphWidths:
+        offset: 0x6542E4
+        size: 0x200
+
+      gFontNarrowLatinGlyphWidths:
+        offset: 0x643EE4
+        size: 0x200
+
+      gFontShortLatinGlyphWidths:
+        offset: 0x64C0E4
+        size: 0x200
+
+      gFontShortJapaneseGlyphWidths:
+        offset: 0x6748E4
+        size: 0x200
