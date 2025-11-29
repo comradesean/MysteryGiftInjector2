@@ -886,12 +886,12 @@ QImage GBAROReader::renderWonderCard(const WonderCardGraphicsEntry &entry)
             const uint8_t *currentTile = tileData + tileNum * TILE_SIZE_4BPP;
             QImage tileImg = tile4bppToImage(currentTile, palette);
 
-            // Apply flips (using Qt6 flipped() instead of deprecated mirrored())
+            // Apply flips
             if (mapEntry.hFlip) {
-                tileImg = tileImg.flipped(Qt::Horizontal);
+                tileImg = tileImg.mirrored(true, false);
             }
             if (mapEntry.vFlip) {
-                tileImg = tileImg.flipped(Qt::Vertical);
+                tileImg = tileImg.mirrored(false, true);
             }
 
             // Convert to ARGB32 for compositing
