@@ -38,6 +38,7 @@ jobs:
         # Create directory structure
         New-Item -ItemType Directory -Force -Path release
         New-Item -ItemType Directory -Force -Path release/lib
+        New-Item -ItemType Directory -Force -Path release/plugins
         New-Item -ItemType Directory -Force -Path temp_deploy
 
         # Copy main files to release root
@@ -51,15 +52,15 @@ jobs:
         # Move DLLs to lib folder
         Get-ChildItem temp_deploy -Filter "*.dll" | Move-Item -Destination release/lib/
 
-        # Move plugin folders to release root (platforms, styles, etc.)
-        Get-ChildItem temp_deploy -Directory | Move-Item -Destination release/
+        # Move plugin folders to plugins folder (platforms, styles, imageformats, etc.)
+        Get-ChildItem temp_deploy -Directory | Move-Item -Destination release/plugins/
 
-        # Create qt.conf to tell Qt where to find libraries
+        # Create qt.conf to tell Qt where to find libraries and plugins
         @"
         [Paths]
         Prefix = .
         Libraries = lib
-        Plugins = .
+        Plugins = plugins
         "@ | Out-File -FilePath release/qt.conf -Encoding ASCII
 
     - name: Upload Artifact
