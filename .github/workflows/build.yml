@@ -10,7 +10,7 @@ on:
 jobs:
   build-windows:
     runs-on: windows-latest
-    
+
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -21,23 +21,26 @@ jobs:
         version: '6.6.0'
         host: 'windows'
         target: 'desktop'
-        arch: 'win64_mingw'
-        modules: 'qtimageformats'
+        arch: 'win64_msvc2019_64'
+
+    - name: Setup MSVC
+      uses: ilammy/msvc-dev-cmd@v1
 
     - name: Configure CMake
-      run: cmake -B build -DCMAKE_BUILD_TYPE=Release -G "MinGW Makefiles"
+      run: cmake -B build -DCMAKE_BUILD_TYPE=Release -G "Ninja"
 
     - name: Build
       run: cmake --build build --config Release
 
     - name: Prepare Release Package
+      shell: pwsh
       run: |
-        mkdir release
-        cp build/Mystery_Gift_Injector.exe release/
-        cp -r build/Tickets release/
-        cp build/documentation.html release/
+        New-Item -ItemType Directory -Force -Path release
+        Copy-Item build/Mystery_Gift_Injector.exe release/
+        Copy-Item -Recurse build/Tickets release/
+        Copy-Item build/documentation.html release/
         # Run windeployqt to bundle Qt DLLs
-        windeployqt release/Mystery_Gift_Injector.exe --release --no-translations
+        & "$env:QT_ROOT_DIR/bin/windeployqt.exe" release/Mystery_Gift_Injector.exe --release --no-translations
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
